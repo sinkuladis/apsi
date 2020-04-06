@@ -22,5 +22,5 @@ steps:
     containerRegistry: 'DockerHub'
     repository: 'richwalkman/apsibackend'
     command: 'buildAndPush'
-    Dockerfile: './backend/apsi_backend/Dockerfile'
+    Dockerfile: './backend/apsi_backend/Dockerfile.prod'
     buildContext: './backend/apsi_backend'
