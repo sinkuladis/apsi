@@ -15,7 +15,7 @@ steps:
     containerRegistry: 'DockerHub'
     repository: 'richwalkman/apsifront'
     command: 'buildAndPush'
-    Dockerfile: './frontend/Dockerfile'
+    Dockerfile: './frontend/dockerfile'
     buildContext: './frontend'
 - task: Docker@2
   inputs:
