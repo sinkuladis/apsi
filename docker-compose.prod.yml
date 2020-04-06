@@ -1,0 +1,33 @@
+version: '3.5'
+services:
+  frontend:
+    container_name: frontend_container
+    build:
+      frontend/
+    volumes:
+      - static:/static
+    ports:
+      - "80:80"
+  backend:
+    build:
+      context: backend/apsi_backend
+      dockerfile:  Dockerfile.prod
+    expose:
+      - 8000
+    command: gunicorn apsi_backend.wsgi:application --bind 0.0.0.0:8000
+    depends_on:
+      - db
+    env_file:
+      - backend/apsi_backend/.env.prod
+    volumes:
+      - static:/static
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - backend/apsi_backend/.env.prod.db
+
+volumes:
+  postgres_data:
+  static:
