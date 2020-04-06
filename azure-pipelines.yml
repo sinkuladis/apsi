@@ -17,3 +17,10 @@ steps:
     command: 'buildAndPush'
     Dockerfile: './frontend/dockerfile'
     buildContext: './frontend'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'DockerHub'
+    repository: 'richwalkman/apsibackend'
+    command: 'buildAndPush'
+    Dockerfile: './backend/apsi_backend'
+    buildContext: './backend/apsi_backend'
