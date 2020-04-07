@@ -6,7 +6,6 @@ services:
       - static:/static
     ports:
       - "80:80"
-    args:
 
   backend:
     image: richwalkman/apsibackend:18
