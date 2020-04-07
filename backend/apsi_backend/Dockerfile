@@ -19,7 +19,6 @@ RUN pip install -r requirements.txt
 
 # copy project
 COPY . /usr/src/app/
-RUN chown app /static
 
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]

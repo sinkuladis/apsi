@@ -1,17 +1,15 @@
 version: '3.5'
 services:
   frontend:
-    container_name: frontend_container
-    build:
-      frontend/
+    image: richwalkman/apsifront:18
     volumes:
       - static:/static
     ports:
       - "80:80"
+    args:
+
   backend:
-    build:
-      context: backend/apsi_backend
-      dockerfile:  Dockerfile.prod
+    image: richwalkman/apsibackend:18
     expose:
       - 8000
     command: gunicorn apsi_backend.wsgi:application --bind 0.0.0.0:8000
