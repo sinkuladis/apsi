@@ -17,6 +17,8 @@ steps:
     command: 'buildAndPush'
     Dockerfile: './frontend/dockerfile'
     buildContext: './frontend'
+    tags: |
+      $BUILD_BUILDNUMBER
 - task: Docker@2
   inputs:
     containerRegistry: 'DockerHub'
@@ -24,3 +26,5 @@ steps:
     command: 'buildAndPush'
     Dockerfile: './backend/apsi_backend/Dockerfile.prod'
     buildContext: './backend/apsi_backend'
+    tags: |
+      $BUILD_BUILDNUMBER
