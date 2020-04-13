@@ -1,14 +1,14 @@
 version: '3.5'
 services:
   frontend:
-    image: richwalkman/apsifront:$BUILD_NUMBER
+    image: richwalkman/apsifront:$IMAGE_VERSION
     volumes:
       - static:/static
     ports:
       - "80:80"
 
   backend:
-    image: richwalkman/apsibackend:$BUILD_NUMBER
+    image: richwalkman/apsibackend:$IMAGE_VERSION
     expose:
       - 8000
     command: gunicorn apsi_backend.wsgi:application --bind 0.0.0.0:8000
