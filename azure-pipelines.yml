@@ -18,7 +18,7 @@ steps:
     Dockerfile: './frontend/dockerfile'
     buildContext: './frontend'
     tags: |
-      $(Build.BuildNumber)
+      $(Build.SourceVersion)
 - task: Docker@2
   inputs:
     containerRegistry: 'DockerHub'
@@ -27,4 +27,4 @@ steps:
     Dockerfile: './backend/apsi_backend/Dockerfile.prod'
     buildContext: './backend/apsi_backend'
     tags: |
-      $(Build.BuildNumber)
+      $(Build.SourceVersion)
