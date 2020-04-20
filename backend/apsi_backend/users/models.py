@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -24,16 +25,6 @@ class Cities(models.Model):
     def __str__(self):
         return '%s' % (self.name)
 
-class Users(models.Model):
-    login        = models.CharField(max_length=100)
-    password     = models.CharField(max_length=100)
-    last_name    = models.CharField(max_length=100)
-    first_name   = models.CharField(max_length=100)
-    city_id      = models.ForeignKey(Cities, on_delete=models.CASCADE)
-    phone_number = models.CharField(max_length=50)
-    email        = models.CharField(max_length=100)
-    create_date  = models.DateField(default=datetime.date.today)
-    active       = models.BooleanField(null=True)
-
-    def __str__(self):
-        return 'login: %s | email: %s' % (self.login, self.email)
+class UsersCities(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    city_id = models.ForeignKey(Cities, on_delete=models.CASCADE)

@@ -1,5 +1,6 @@
 from django.db import models
-from apsi.backend.apsi_backend.users.models import Cities, Users
+from apsi.backend.apsi_backend.users.models import Cities
+from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
