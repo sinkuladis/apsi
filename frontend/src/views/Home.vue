@@ -1,22 +1,24 @@
 <template>
     <div class="main-body">
-        <categories-picker/>
-        <highlights-list/>
+        <search-section />
+        <categories-picker class="content"/>
+        <highlights-list class="content"/>
     </div>
 </template>
 
 <script>
     import CategoriesPicker from "@/components/CategoriesPicker";
     import HighlightsList from "@/components/HighlightsList";
+    import SearchSection from "@/components/SearchSection";
 
     export default {
         name: 'Home',
-        components: {HighlightsList, CategoriesPicker}
+        components: {HighlightsList, CategoriesPicker, SearchSection}
     }
 </script>
 
 <style scoped>
-    .main-body {
+    .content {
         display: flex;
         flex-direction: column;
         justify-content: center;

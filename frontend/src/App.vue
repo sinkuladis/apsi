@@ -1,7 +1,7 @@
 <template>
     <v-app id="app" class="grey lighten-3">
         <navbar/>
-        <search-section/>
+<!--        <search-section/>-->
         <router-view></router-view>
         <bottom-section class="footer"></bottom-section>
     </v-app>
@@ -9,7 +9,7 @@
 
 <script>
     import Navbar from '@/components/Navbar';
-    import SearchSection from '@/components/SearchSection';
+    // import SearchSection from '@/components/SearchSection';
     import BottomSection from "@/components/BottomSection";
 
     export default {
@@ -17,7 +17,7 @@
         components: {
             BottomSection,
             Navbar,
-            SearchSection
+            // SearchSection
         }
     }
 </script>
