@@ -1,8 +1,13 @@
 <template>
-    <div class="main-body">
-        <search-section />
-        <categories-picker class="content"/>
-        <highlights-list class="content"/>
+    <div>
+        <!--Grey area section-->
+        <section class="grey lighten-4 text-center">
+            <search-section />
+            <categories-picker/>
+        </section>
+
+        <!--White area section-->
+        <highlights-list/>
     </div>
 </template>
 
@@ -18,10 +23,10 @@
 </script>
 
 <style scoped>
-    .content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+    /*.content {*/
+    /*    display: flex;*/
+    /*    flex-direction: column;*/
+    /*    justify-content: center;*/
+    /*    align-items: center;*/
+    /*}*/
 </style>

@@ -1,20 +1,24 @@
 <template>
-    <v-container>
+    <v-container class="py-0">
         <v-toolbar flat>
+            <!--Toorbar title-->
             <v-toolbar-title class="display-1 blue-grey--text text--darken-3">
                 <span class="font-weight-light">Olx</span>
                 <span class="font-weight-medium">ample</span>
             </v-toolbar-title>
 
             <v-spacer></v-spacer>
+
             <div class="text-center">
+
+                <!--Account icon button-->
                 <v-menu offset-y>
                     <template v-slot:activator="{ on }">
-                        <v-btn icon class="me-2 caption" text color="blue-grey" v-on="on">
-                            <v-icon large>mdi-account-circle</v-icon>
+                        <v-btn fab text x-small dark class="me-4 grey lighten-2 blue--text text--darken-1" v-on="on">
+                            <v-icon medium>mdi-account</v-icon>
                         </v-btn>
                     </template>
-                    <v-list subheader>
+                    <v-list v-if="loggedIn" subheader>
                         <v-subheader class="blue-grey--text text--darken-3">
                             <span class="font-weight-light">Olx</span>
                             <span class="font-weight-medium">ample</span>
@@ -34,7 +38,9 @@
                         </v-list-item>
                     </v-list>
                 </v-menu>
-                <v-btn rounded dark color="orange">
+
+                <!--"Dodaj ogłoszenie" button-->
+                <v-btn depressed dark color="orange">
                     + DODAJ OGŁOSZENIE
                 </v-btn>
             </div>
@@ -50,7 +56,8 @@
                 menuItems: [
                     { title: 'Ogłoszenia' },
                     { title: 'Ustawienia' }
-                ]
+                ],
+                loggedIn: true
             }
         }
     }
