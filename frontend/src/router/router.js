@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import Home from '@/views/Home'
+import Login from "@/views/Login";
 
 const routes = [
     {
@@ -10,6 +12,11 @@ const routes = [
         meta: {
             title: 'Homepage'
         }
+    },
+    {
+        path: '/login',
+        name: 'Logowanie',
+        component: Login,
     }
 ]
 
