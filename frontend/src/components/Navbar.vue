@@ -4,7 +4,7 @@
         <v-toolbar flat>
             <!--Toorbar title-->
             <v-toolbar-title>
-                <v-card :ripple="false" :to="'/'" class="display-1 blue-grey--text text--darken-3">
+                <v-card :ripple="false" :to="'/'" tag="section" class="display-1 blue-grey--text text--darken-3 white-background">
                     <span class="font-weight-light">Olx</span>
                     <span class="font-weight-medium">ample</span>
                 </v-card>
@@ -73,4 +73,7 @@
 </script>
 
 <style scoped>
+    .white-background {
+        background-color: white;
+    }
 </style>
