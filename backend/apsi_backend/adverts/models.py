@@ -1,5 +1,5 @@
 from django.db import models
-from apsi.backend.apsi_backend.users.models import Cities
+from apsi.backend.apsi_backend.users.models import UsersCities
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
@@ -25,7 +25,7 @@ class Advert_Status(models.Model):
         return '%s' % (self.name)
 
 class Advert_Messages(models.Model):
-    from_user_id = models.ForeignKey(Users, on_delete=models.CASCADE)
+    from_user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     advert_id    = models.ForeignKey(Adverts, on_delete=models.CASCADE)
     content      = models.CharField(max_length=3000)
 
@@ -35,9 +35,9 @@ class Adverts(models.Model):
     price              = models.FloatField(validators=[MinValueValidator(0.01), MaxValueValidator(1000000)])
     for_free           = models.BooleanField(default=False)
     advert_category_id = models.ForeignKey(Advert_Categories, on_delete=models.CASCADE)
-    city_id            = models.ForeignKey(Cities, on_delete=models.CASCADE)
+    city_id            = models.ForeignKey(UsersCities, on_delete=models.CASCADE)
     create_date        = models.DateField(default=datetime.date.today)
-    user_id            = models.ForeignKey(Users, on_delete=models.CASCADE)
+    user_id            = models.ForeignKey(User, on_delete=models.CASCADE)
     promotion_id       = models.ForeignKey(Advert_Promotions, on_delete=models.CASCADE, null=True)
     advert_status_id   = models.ForeignKey(Advert_Status, on_delete=models.CASCADE, null=True)
 
