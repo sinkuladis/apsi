@@ -1,4 +1,5 @@
 from django.db import models
+from apsi.backend.apsi_backend.users.models import UsersCities
 import datetime
 #from apsi.backend.apsi_backend.users.models import Cities
 from django.contrib.auth.models import User
@@ -38,7 +39,7 @@ class Adverts(models.Model):
     price              = models.FloatField(validators=[MinValueValidator(0.01), MaxValueValidator(1000000)])
     for_free           = models.BooleanField(default=False)
     advert_category_id = models.ForeignKey(Advert_Categories, on_delete=models.CASCADE)
-    city_id            = models.ForeignKey(Cities, on_delete=models.CASCADE)
+    city_id            = models.ForeignKey(UsersCities, on_delete=models.CASCADE)
     create_date        = models.DateField(default=datetime.date.today)
     user_id            = models.ForeignKey(User, on_delete=models.CASCADE)
     promotion_id       = models.ForeignKey(Advert_Promotions, on_delete=models.CASCADE, null=True)
