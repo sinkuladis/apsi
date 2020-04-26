@@ -32,7 +32,7 @@
         padding: 15px;
         flex-direction: column;
         text-align: left;
-        margin: 15px;
+        margin: 15px 0;
 
         h2 {
             margin: 0;
