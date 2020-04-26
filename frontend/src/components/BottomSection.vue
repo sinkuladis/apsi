@@ -8,8 +8,12 @@
                     flat
                     tile
                     class="text-center font-weight-thin">
+                
+                <!-- Footer start -->
                 <v-divider></v-divider>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt magni quis natus molestias ducimus ex deleniti laboriosam, quaerat dolorum maiores pariatur error voluptatem esse molestiae repellat dolore exercitationem? Velit, molestiae.</p>
+                
+                <!-- Info links -->
                 <v-divider></v-divider>
                 <v-container>
                     <v-btn x-small text class="font-weight-light">pomoc</v-btn>
@@ -19,12 +23,15 @@
                     <v-btn x-small text class="font-weight-light">jak działa</v-btn>
                     <v-btn x-small text class="font-weight-light">kariera</v-btn>
                 </v-container>
+                
+                <!-- Current year -->
                 <v-divider></v-divider>
                 <v-card-text class="py-2">
                     {{ new Date().getFullYear() }} —
                     <span class="font-weight-light">Olx</span>
                     <span class="font-weight-medium">ample</span>
                 </v-card-text>
+                
             </v-card>
         </v-container>
     </v-footer>

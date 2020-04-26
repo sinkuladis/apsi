@@ -1,5 +1,7 @@
 <template>
     <v-container>
+
+        <!-- Service name -->
         <v-row align-content="center" justify="center">
             <v-col>
                 <div class="display-3 blue-grey--text text--darken-3 text-center">
@@ -8,6 +10,8 @@
                 </div>
             </v-col>
         </v-row>
+
+        <!-- Search bar -->
         <v-card color="blue" class="px-3">
             <v-row justify="space-between">
                 <v-col cols="7">
@@ -34,6 +38,7 @@
                 </v-col>
             </v-row>
         </v-card>
+
     </v-container>
 </template>
 

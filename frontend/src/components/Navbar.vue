@@ -2,7 +2,8 @@
     <div>
     <v-container class="py-0">
         <v-toolbar flat>
-            <!--Toorbar title-->
+
+            <!-- Toorbar title -->
             <v-toolbar-title>
                 <v-card :ripple="false" :to="'/'" tag="section" class="display-1 blue-grey--text text--darken-3 white-background">
                     <span class="font-weight-light">Olx</span>
@@ -12,13 +13,17 @@
 
             <v-spacer></v-spacer>
 
-            <!--Account icon button-->
-            <!--TODO: Can it be done with only one button?-->
+            <!-- Account icon button -->
+            <!-- TODO: Can it be done with one button? -->
             <div>
+
+                <!-- Show button if user isn't logged in -->
                 <v-btn v-if="!loggedIn" :to="'/login'" :ripple="false" fab text x-small dark
                        class="me-4 grey lighten-2 blue--text text--darken-1">
                     <v-icon medium>mdi-account</v-icon>
                 </v-btn>
+
+                <!-- Otherwise show account menu icon -->
                 <v-menu v-if="loggedIn" :ripple="false" offset-y>
                     <template v-slot:activator="{ on }">
                         <v-btn fab text x-small dark class="me-4 grey lighten-2 blue--text text--darken-1" v-on="on">
@@ -45,12 +50,14 @@
                         </v-list-item>
                     </v-list>
                 </v-menu>
+
             </div>
 
             <!--"Dodaj ogłoszenie" button-->
             <v-btn depressed dark color="orange">
                 + DODAJ OGŁOSZENIE
             </v-btn>
+            
         </v-toolbar>
         <v-divider></v-divider>
     </v-container>

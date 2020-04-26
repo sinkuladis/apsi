@@ -1,12 +1,11 @@
 <template>
     <div>
-        <!--Grey area section-->
+        <!-- Part with greish background -->
         <section class="grey lighten-4 text-center">
             <search-section />
             <categories-picker/>
         </section>
 
-        <!--White area section-->
         <highlights-list/>
     </div>
 </template>
