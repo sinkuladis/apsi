@@ -1,29 +1,43 @@
 version: '3.5'
 services:
   frontend:
-    image: richwalkman/apsifront:20
+    image: richwalkman/apsifront:$BUILD_BUILDID
     volumes:
       - static:/static
+    depends_on:
+      - backend
     ports:
       - "80:80"
 
   backend:
-    image: richwalkman/apsibackend:20
+    image: richwalkman/apsibackend:$BUILD_BUILDID
     expose:
       - 8000
     command: gunicorn apsi_backend.wsgi:application --bind 0.0.0.0:8000
     depends_on:
       - db
-    env_file:
-      - backend/apsi_backend/.env.prod
+    environment:
+      - DATABASE=$DATABASE
+      - ALLOWED_HOSTS=$ALLOWED_HOSTS
+      - SECRET_KEY=$SECRET_KEY
+      - SQL_DATABASE=$SQL_DATABASE
+      - SQL_ENGINE=$SQL_ENGINE
+      - SQL_HOST=$SQL_HOST
+      - SQL_PASSWORD=$SQL_PASSWORD
+      - SQL_PORT=$SQL_PORT
+      - SQL_USER=$SQL_USER
     volumes:
       - static:/static
   db:
     image: postgres:12.0-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    env_file:
-      - backend/apsi_backend/.env.prod.db
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=$POSTGRES_DB
+    ports:
+      - "5432:5432"
 
 volumes:
   postgres_data:
