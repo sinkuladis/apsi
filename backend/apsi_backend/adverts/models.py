@@ -1,10 +1,11 @@
 from django.db import models
-from apsi.backend.apsi_backend.users.models import UsersCities
+from users.models import UsersCities
+import datetime
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
-
+from users.models import Cities
 class Advert_Categories(models.Model):
     name = models.CharField(max_length=100)
 
@@ -24,11 +25,6 @@ class Advert_Status(models.Model):
     def __str__(self):
         return '%s' % (self.name)
 
-class Advert_Messages(models.Model):
-    from_user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    advert_id    = models.ForeignKey(Adverts, on_delete=models.CASCADE)
-    content      = models.CharField(max_length=3000)
-
 class Adverts(models.Model):
     title              = models.CharField(max_length=200)
     description        = models.CharField(max_length=9000)
@@ -43,3 +39,9 @@ class Adverts(models.Model):
 
     def __str__(self):
         return '%s' % (self.marchant_name)
+
+class Advert_Messages(models.Model):
+    from_user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    advert_id    = models.ForeignKey(Adverts, on_delete=models.CASCADE)
+    content      = models.CharField(max_length=3000)
+
