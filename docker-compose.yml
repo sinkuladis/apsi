@@ -6,6 +6,8 @@ services:
       frontend/
     ports:
       - "80:80"
+    depends_on:
+      - backend
   backend:
     build: backend/apsi_backend
     ports:

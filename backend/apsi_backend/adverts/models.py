@@ -1,9 +1,13 @@
 from django.db import models
 from apsi.backend.apsi_backend.users.models import UsersCities
+import datetime
+#from apsi.backend.apsi_backend.users.models import Cities
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
+from apsi_backend.users.models import Cities
+
 
 class Advert_Categories(models.Model):
     name = models.CharField(max_length=100)
