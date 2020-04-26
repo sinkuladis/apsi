@@ -1,23 +1,32 @@
 <template>
     <div class="main-body">
-        <categories-picker/>
-        <highlights-list 
-            title="Ogłoszenia promowane"
-            :items=promotedItems
-        />
-        <highlights-list 
-            title="Ostatnio dodane"
-            :items=lastAdded
-        />
+        <div>
+            <!--Grey area section-->
+            <section class="grey lighten-4 text-center">
+                <search-section />
+                <categories-picker/>
+            </section>
+
+            <!--White area section-->
+            <highlights-list 
+                title="Ogłoszenia promowane"
+                :items=promotedItems
+            />
+            <highlights-list 
+                title="Ostatnio dodane"
+                :items=lastAdded
+            />
+        </div>
     </div>
 </template>
 
 <script>
     import CategoriesPicker from "@/components/CategoriesPicker";
     import HighlightsList from "@/components/HighlightsList";
+    import SearchSection from "@/components/SearchSection";
     export default {
         name: 'Home',
-        components: { HighlightsList, CategoriesPicker },
+        components: { HighlightsList, CategoriesPicker, SearchSection},
         data: () => {
             return { 
                     promotedItems: [
@@ -41,5 +50,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding-bottom: 10rem;
     }
 </style>
