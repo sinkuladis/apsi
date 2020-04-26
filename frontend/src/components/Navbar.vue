@@ -52,8 +52,9 @@
                 + DODAJ OGŁOSZENIE
             </v-btn>
         </v-toolbar>
+        <v-divider></v-divider>
     </v-container>
-    <v-divider></v-divider>
+    
     </div>
 </template>
 

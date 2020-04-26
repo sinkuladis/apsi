@@ -1,5 +1,5 @@
 <template>
-    <v-container class="my-15">
+    <v-container class="my-15 fixed-width">
         <v-row justify="center">
             <v-col cols="7">
                 <v-card elevation="24">
@@ -96,4 +96,7 @@
 </script>
 
 <style scoped>
+    .fixed-width {
+        width: 700px;
+    }
 </style>
