@@ -2,8 +2,9 @@ from datetime import date
 
 from django.forms import ModelForm
 
-from apsi_backend.adverts.models import Adverts#, Advert_Categories, Advert_Status, Advert_Messages
+from apsi_backend.adverts.models import Adverts, Advert_Categories, Advert_Status, Advert_Messages
 #from apsi_backend.users.models import Cities, Countries
+from users.models import Cities
 
 
 class AdvertsForm(ModelForm):
@@ -20,33 +21,33 @@ class AdvertsForm(ModelForm):
                    'promotion_id',
                    'advert_status_id')
 
-# class AdvertCategoryForm(ModelForm):
-#     class Meta:
-#         model  = Advert_Categories
-#         fields = '__all__'
-#
-# class AdvertPromotionsForm(ModelForm):
-#     class Meta:
-#         model  = Advert_Categories
-#         fields = '__all__'
-#
-# class AdvertStatusForm(ModelForm):
-#     class Meta:
-#         model  = Advert_Status
-#         fields = '__all__'
-#
-# class AdvertMessagesForm(ModelForm):
-#     class Meta:
-#         model  = Advert_Messages
-#         fields = '__all__'
-#
-# class AdvertMessagesForm(ModelForm):
-#     class Meta:
-#         model  = Advert_Messages
-#         fields = '__all__'
-#
-#
-# class CitiesForm(ModelForm):
-#     class Meta:
-#         model  = Cities
-#         fields = '__all__'
+class AdvertCategoryForm(ModelForm):
+    class Meta:
+        model  = Advert_Categories
+        fields = '__all__'
+
+class AdvertPromotionsForm(ModelForm):
+    class Meta:
+        model  = Advert_Categories
+        fields = '__all__'
+
+class AdvertStatusForm(ModelForm):
+    class Meta:
+        model  = Advert_Status
+        fields = '__all__'
+
+class AdvertMessagesForm(ModelForm):
+    class Meta:
+        model  = Advert_Messages
+        fields = '__all__'
+
+class AdvertMessagesForm(ModelForm):
+    class Meta:
+        model  = Advert_Messages
+        fields = '__all__'
+
+
+class CitiesForm(ModelForm):
+    class Meta:
+        model  = Cities
+        fields = '__all__'

@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 #    url('', include('rest_framework.urls')),
     path('user/', include("users.api.urls")),
+    path('advert/', include("adverts.api.urls")),
 ]
