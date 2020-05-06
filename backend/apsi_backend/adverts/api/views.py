@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from backend.apsi_backend.adverts.models import Adverts
+from adverts.models import Adverts
 from .serializers import AdvertSerializer
 
 class AdvertCreate(APIView):

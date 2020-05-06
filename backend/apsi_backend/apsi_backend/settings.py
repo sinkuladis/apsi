@@ -140,3 +140,7 @@ REST_FRAMEWORK = {
     )
     
 }
+
+STATICFILES_DIRS = [
+    os.path.join(SETTINGS_PATH, "static"),
+]

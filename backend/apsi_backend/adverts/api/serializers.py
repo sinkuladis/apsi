@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 #from django.contrib.auth.models import User
-from backend.apsi_backend.adverts.models import Adverts
+from adverts.models import Adverts
 
 
 class AdvertSerializer(serializers.ModelSerializer):
