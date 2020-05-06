@@ -5,7 +5,7 @@ from rest_framework import status
 from adverts.models import Adverts
 from .serializers import AdvertSerializer
 
-class AdvertCreate(APIView):
+class AdvertView(APIView):
     """
     Creates the advert.
     """

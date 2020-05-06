@@ -19,15 +19,16 @@ from django.urls import path
 from django.conf.urls import url, include
 from django.views.generic import TemplateView
 
-
 from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('advert/', include("adverts.api.urls")),
-#    url('', include('rest_framework.urls')),
+    #    url('', include('rest_framework.urls')),
     path('user/', include("users.api.urls")),
     path('swagger-ui/', TemplateView.as_view(
         template_name='swagger-ui.html',
     ), name='swagger-ui'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
