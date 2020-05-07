@@ -1,17 +1,13 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from .serializers import UserSerializer
+from django.contrib.auth.models import User
+from rest_framework import status, viewsets
 
-class UserCreate(APIView):
-    """
-    Creates the user.
-    """
+from users.api.serializers import UserSerializer
 
-    def post(self, request, format='json'):
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            user = serializer.save()
-            if user:
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    fields = ['email', 'username','last_name', 'first_name', 'password']
+
+
+

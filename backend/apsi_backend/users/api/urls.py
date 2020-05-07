@@ -1,8 +1,12 @@
-from django.urls import path
-from . import views as custom_views
-from rest_framework.authtoken import views
+from django.conf.urls import url
+from django.urls import path, include
+from rest_framework import routers
+
+from .views import UserViewSet
+
+router = routers.DefaultRouter()
+router.register('', UserViewSet)
 
 urlpatterns = [
-    path('create', custom_views.UserCreate.as_view(), name='account-create'),
-    path('login', views.obtain_auth_token, name='login'),
+    url(r'^', include(router.urls)),
 ]
