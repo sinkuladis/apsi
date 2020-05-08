@@ -13,6 +13,7 @@ fi
 
 python manage.py flush --no-input
 python manage.py migrate
+mkdir apsi_backend/static
 python manage.py generateschema --format openapi --title 'FakeOlx' --description 'Endpoints to use' > apsi_backend/static/schema.yml
 
 exec "$@"
