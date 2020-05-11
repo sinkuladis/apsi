@@ -25,8 +25,7 @@ from . import settings
 
 urlpatterns = [
     path('api/admin/', admin.site.urls),
-    path('api/adverts/', include("adverts.api.urls")),
-    path('api/users/', include("users.api.urls")),
+    path('api/', include("apsi_app.api.urls")),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/swagger-ui/', TemplateView.as_view(
