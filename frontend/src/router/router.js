@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home'
-import Login from "@/views/Login";
+import Login from "@/views/Login"
+import SubmitAdvert from "@/views/Adverts/SubmitAdvert"
 
 const routes = [
     {
@@ -16,7 +17,12 @@ const routes = [
         path: '/login',
         name: 'Logowanie',
         component: Login,
-    }
+    },
+    {
+        path: '/submitAdvert',
+        name: 'SubmitAdvert',
+        component: SubmitAdvert,
+    },
 ]
 
 Vue.use(VueRouter);

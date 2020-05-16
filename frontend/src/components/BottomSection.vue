@@ -1,7 +1,7 @@
 <template>
     <v-footer
             padless
-            absolute
+            height="200"
             class="white">
         <v-container class="py-0">
             <v-card
