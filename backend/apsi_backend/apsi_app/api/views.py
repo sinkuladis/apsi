@@ -1,5 +1,3 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from rest_framework import status, viewsets, permissions
 from django.contrib.auth.models import User
 from ..models import Adverts, Advert_Messages
@@ -11,16 +9,15 @@ class UserView(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [permissions.AllowAny]
     fields = ['email', 'username', 'last_name', 'first_name', 'password']
-    filterset_fields = ('id', )
 
 class AdvertView(viewsets.ModelViewSet):
     queryset = Adverts.objects.all()
     serializer_class = AdvertSerializer
     permission_classes = [permissions.AllowAny]
-    filterset_fields = ('user_id', )
+    filterset_fields = ('user_id', 'advert_category_id', 'city_id', 'promotion_id', 'advert_status_id')
+
 
 class AdvertMessage(viewsets.ModelViewSet):
     queryset = Advert_Messages.objects.all()
     serializer_class = AdvertMessageSerializer
     permission_classes = [permissions.AllowAny]
-    filterset_fields =('advert_id',)
