@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+AUTH_USER_MODEL = 'apsi_app.User'
 ROOT_URLCONF = 'apsi_backend.urls'
 SETTINGS_PATH = os.path.normpath(os.path.dirname(__file__))
 TEMPLATES = [

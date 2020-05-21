@@ -1,11 +1,9 @@
 from rest_framework import status, viewsets, permissions
-from django.contrib.auth.models import User
-from rest_framework.authentication import BasicAuthentication, TokenAuthentication
 from rest_framework.decorators import permission_classes, action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from ..models import Adverts, Advert_Messages
+from ..models import Advert, AdvertMessage, User
 from .serializers import UserSerializer, AdvertSerializer, AdvertMessageSerializer, UserResetPasswordSerializer
 
 
@@ -28,11 +26,12 @@ class UserView(viewsets.ModelViewSet):
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    def update(self, request, *args, **kwargs):
-        serializer = UserSerializer(request.user, data=request.data, partial=True)
+    def partial_update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.serializer_class(instance, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
-        self.perform_update(serializer)
-        return Response(data=serializer.data, status=status.HTTP_202_ACCEPTED)
+        serializer.save()
+        return Response(serializer.data)
 
     @action(detail=False, permission_classes=[IsAuthenticated], url_path='current')
     def get_current_user(self, request):
@@ -41,13 +40,20 @@ class UserView(viewsets.ModelViewSet):
 
 
 class AdvertView(viewsets.ModelViewSet):
-    queryset = Adverts.objects.all()
+    queryset = Advert.objects.all()
     serializer_class = AdvertSerializer
     permission_classes = [permissions.AllowAny]
-    filterset_fields = ('user_id', 'advert_category_id', 'city_id', 'promotion_id', 'advert_status_id')
+    filterset_fields = ('user', 'advert_category', 'city', 'promotion', 'advert_status')
+
+    def partial_update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.serializer_class(instance, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 
 
-class AdvertMessage(viewsets.ModelViewSet):
-    queryset = Advert_Messages.objects.all()
+class AdvertMessageView(viewsets.ModelViewSet):
+    queryset = AdvertMessage.objects.all()
     serializer_class = AdvertMessageSerializer
     permission_classes = [permissions.AllowAny]

@@ -16,4 +16,6 @@ python manage.py migrate
 mkdir apsi_backend/static
 python manage.py generateschema --format openapi --title 'FakeOlx' --description 'Endpoints to use' > apsi_backend/static/schema.yml
 
+echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@myproject.com', 'password')" | python manage.py shell
+
 exec "$@"
