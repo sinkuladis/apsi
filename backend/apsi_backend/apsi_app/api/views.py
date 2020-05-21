@@ -13,7 +13,7 @@ class UserView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.AllowAny]
-    fields = ['email', 'username', 'last_name', 'first_name']
+    fields = ['id', 'email', 'username', 'last_name', 'first_name']
 
     @action(detail=True, permission_classes=[IsAuthenticated],
                 methods=['put'], url_path='password')
@@ -33,6 +33,11 @@ class UserView(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         self.perform_update(serializer)
         return Response(data=serializer.data, status=status.HTTP_202_ACCEPTED)
+
+    @action(detail=False, permission_classes=[IsAuthenticated], url_path='current')
+    def get_current_user(self, request):
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data)
 
 
 class AdvertView(viewsets.ModelViewSet):
