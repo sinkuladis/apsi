@@ -1,7 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home'
-import Login from "@/views/Login";
+import Login from "@/views/Login"
+import AdPage from '@/views/AdPage'
+import AdNotFound from '@/views/AdNotFound'
+import UserPage from '@/views/UserPage'
+import NotFound from '@/views/NotFound'
+import ObservedAds from '@/views/ObservedAds'
 
 const routes = [
     {
@@ -16,6 +21,35 @@ const routes = [
         path: '/login',
         name: 'Logowanie',
         component: Login,
+    },
+    {
+        path: '/ad/:id',
+        name: 'Ogłoszenie',
+        component: AdPage,
+    },
+    {
+        path: '/ad-not-found',
+        name: 'Ogłoszenie nieznalezione',
+        component: AdNotFound,
+    },
+    {
+        path: '/user/:id/observed-ads',
+        name: 'Obserwowane ogłoszenia',
+        component: ObservedAds,
+    },
+    {
+        path: '/user/:id',
+        name: 'Panel użytkownika',
+        component: UserPage,
+    },
+    {
+        path: '/not-found',
+        name: 'Strona nie istnieje',
+        component: NotFound,
+    },
+    { 
+        path: '*', 
+        redirect: '/' 
     }
 ]
 
