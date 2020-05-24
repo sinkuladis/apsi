@@ -38,7 +38,7 @@ const routes = [
         component: ObservedAds,
     },
     {
-        path: '/user/:id',
+        path: '/userpage',
         name: 'Panel użytkownika',
         component: UserPage,
     },
