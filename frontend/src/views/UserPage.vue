@@ -59,58 +59,22 @@
   export default {
     data() {
       return {
-        user: {
-          username: '',
-          last_name: '',
-          first_name: '',
-          email: '',
-          password: ''
-        },
+        user: this.$store.getters.user,
         error: false,
         success: false,
         showPass: false,
       }
     },
     methods: {
-      loadUserInfo: async function() {
-        try {
-          const resp = await this.$http.get(`http://localhost:8080/api/users/${this.$route.params.id}/`);
-          this.user = {
-            ...resp.data,
-            password: this.user.password
-          };
-        } catch {
-          this.$router.push('/not-found')
-        }
-      },
       changeUserData: async function() {
-        const data = this.user;
         try {
-          await this.$http.put(`http://localhost:8080/api/users/${this.$route.params.id}/`,
-                        {
-                            "username": data.username,
-                            "last_name": data.last_name,
-                            "first_name": data.first_name,
-                            "email": data.email,
-                            "password": data.password
-                        },
-                        {
-                            mode: 'cors', 
-                            credentials: 'same-origin', 
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                        });
+          await this.$store.dispatch('updateUserData', this.user)
           this.error = false;
           this.success = true;
-          this.loadUserInfo();
         } catch {
           this.error = true;
         }
       }
-    },
-    created() {
-      this.loadUserInfo();
     }
   }
 </script>

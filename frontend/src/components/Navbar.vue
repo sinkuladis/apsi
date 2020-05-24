@@ -34,7 +34,9 @@
                         <v-divider></v-divider>
                         <v-list-item
                                 v-for="action in menuItems"
-                                :key="action.title">
+                                :key="action.title"
+                                :to="action.to"
+                        >
                             <v-list-item-title class="blue--text text--darken-1">
                                 {{ action.title }}
                             </v-list-item-title>
@@ -66,7 +68,7 @@
             return {
                 menuItems: [
                     {title: 'Ogłoszenia'},
-                    {title: 'Ustawienia'}
+                    {title: 'Ustawienia', to: '/userpage'}
                 ],
             }
         },
