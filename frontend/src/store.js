@@ -30,7 +30,17 @@ export default new Vuex.Store({
     },
     user_data_error(state){
       state.status = 'error'
-      state.userdata = {}
+      state.user = {}
+    },
+    update_user_data_request(state){
+      state.status = 'loading'
+    },
+    update_user_data_success(state, user){
+      state.status = ''
+      state.user = user
+    },
+    update_user_data_error(state){
+      state.status = 'error'
     },
     logout(state){
       state.status = ''
@@ -42,7 +52,7 @@ export default new Vuex.Store({
     login({commit, dispatch}, user){
       return new Promise((resolve, reject) => {
         commit('auth_request')
-        axios({url: 'http://localhost:8080/api/token/', data: user, method: 'POST' })
+        axios({url: '/api/token/', data: user, method: 'POST' })
           .then((resp) => {
             const token = resp.data.access
             localStorage.setItem('token', token)
@@ -61,7 +71,7 @@ export default new Vuex.Store({
     register({commit}, user){
       return new Promise((resolve, reject) => {
         commit('auth_request')
-        axios({url: 'http://localhost:8080/api/users/', data: user, method: 'POST' })
+        axios({url: '/api/users/', data: user, method: 'POST' })
           .then((resp) => {
             commit('auth_success')
             resolve(resp)
@@ -82,9 +92,8 @@ export default new Vuex.Store({
     },
     getUserData({commit}, token){
       return new Promise((resolve, reject) => {
-        console.log(token)
         commit('user_data_request')
-        axios.get("http://localhost:8080/api/users/current",
+        axios.get("/api/users/current",
           {
             credentials: "include",
             headers: {'Authorization': 'Bearer ' + token}
@@ -96,6 +105,19 @@ export default new Vuex.Store({
           commit('user_data_error', e)
           reject(e)
         })
+      })
+    },
+    updateUserData({commit}, data){
+      return new Promise((resolve, reject) => {
+        commit('update_user_data_request')
+        axios({url: `/api/users/${data.id}/`, data: data, method: 'PUT'})
+          .then((resp) => {
+            commit('update_user_data_success', resp.data)
+            resolve(resp)
+          }).catch((e) => {
+            commit('update_user_data_error')
+            reject(e)
+          })
       })
     }
   },

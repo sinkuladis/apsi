@@ -155,12 +155,13 @@
         methods: {
             register: async function () {
                 try {
+                    const redirect = this.$route.query.redirect;
                     await this.$store.dispatch('register', this.registrationData)
                     await this.$store.dispatch('login', {
                         username: this.registrationData.username,
                         password: this.registrationData.password
                     })
-                    this.$router.push('/')
+                    this.$router.push(redirect ? redirect : '/')
                 } catch (e) {
                     this.registerValidationErrors = e.response;
                     this.registerError = true;
@@ -168,8 +169,9 @@
             },
             login: async function () {
                 try {
+                    const redirect = this.$route.query.redirect;
                     await this.$store.dispatch('login', this.loginData)
-                    this.$router.push('/')
+                    this.$router.push(redirect ? redirect : '/')
                 } catch (e) {
                     this.loginError = true;
                 }
