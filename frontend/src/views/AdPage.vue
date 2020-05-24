@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  
 
   export default {
     data() {
@@ -43,7 +43,7 @@
     methods: {
       loadAdInfo: async function() {
         try {
-          const resp = await axios.get(`http://localhost:8080/api/adverts/${this.$route.params.id}/`);
+          const resp = await this.$http.get(`http://localhost:8080/api/adverts/${this.$route.params.id}/`);
           this.ad = resp.data;
         } catch {
           this.$router.push('/ad-not-found')

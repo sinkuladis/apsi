@@ -54,7 +54,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  
 
   export default {
     data() {
@@ -74,7 +74,7 @@
     methods: {
       loadUserInfo: async function() {
         try {
-          const resp = await axios.get(`http://localhost:8080/api/users/${this.$route.params.id}/`);
+          const resp = await this.$http.get(`http://localhost:8080/api/users/${this.$route.params.id}/`);
           this.user = {
             ...resp.data,
             password: this.user.password
@@ -86,7 +86,7 @@
       changeUserData: async function() {
         const data = this.user;
         try {
-          await axios.put(`http://localhost:8080/api/users/${this.$route.params.id}/`,
+          await this.$http.put(`http://localhost:8080/api/users/${this.$route.params.id}/`,
                         {
                             "username": data.username,
                             "last_name": data.last_name,

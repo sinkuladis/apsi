@@ -29,6 +29,13 @@
                                         </v-text-field>
                                     </v-col>
                                 </v-row>
+                                <v-row v-if="loginError">
+                                    <v-col>
+                                        <p class="error">
+                                            Wystąpił błąd. Spróbuj ponownie.
+                                        </p>
+                                    </v-col>
+                                </v-row>
                                 <v-row>
                                     <v-col cols="12">
                                         <v-btn 
@@ -59,13 +66,13 @@
                                 </v-row>
                                 <v-row>
                                     <v-col cols="12">
-                                        <v-text-field dense v-model="registrationData.firstName" outlined label="Imię">
+                                        <v-text-field dense v-model="registrationData.first_name" outlined label="Imię">
                                         </v-text-field>
                                     </v-col>
                                 </v-row>
                                 <v-row>
                                     <v-col cols="12">
-                                        <v-text-field dense v-model="registrationData.lastName" outlined label="Nazwisko">
+                                        <v-text-field dense v-model="registrationData.last_name" outlined label="Nazwisko">
                                         </v-text-field>
                                     </v-col>
                                 </v-row>
@@ -120,8 +127,7 @@
 </template>
 
 <script>
-    import axios from 'axios'
-    import Vue from 'vue'
+    
 
     export default {
         name: "Login",
@@ -134,69 +140,38 @@
                 registrationData: {
                     username: '',
                     email: '',
-                    firstName: '',
-                    lastName: '',
+                    first_name: '',
+                    last_name: '',
                     password: ''
                 },
                 registerValidationErrors: {},
                 registerError: false,
+                loginValidationErrors: {},
+                loginError: false,
                 showPass: false,
                 checkbox: false
             }
         },
         methods: {
             register: async function () {
-                const data = this.registrationData;
                 try {
-                    const resp = await axios.post("http://localhost:8080/api/users/", 
-                        {
-                            "username": data.username,
-                            "last_name": data.lastName,
-                            "first_name": data.firstName,
-                            "email": data.email,
-                            "password": data.password
-                        },
-                        {
-                            mode: 'cors', 
-                            credentials: 'same-origin', 
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                        }
-                    );
-                    if (resp.status === 201){
-                        this.registerError = false;
-                        this.registerValidationErrors = {};
-                        this.login({
-                            username: data.username, 
-                            password: data.password
-                        });
-                    }
+                    await this.$store.dispatch('register', this.registrationData)
+                    await this.$store.dispatch('login', {
+                        username: this.registrationData.username,
+                        password: this.registrationData.password
+                    })
+                    this.$router.push('/')
                 } catch (e) {
                     this.registerValidationErrors = e.response;
                     this.registerError = true;
                 }
             },
-            login: async function ({username, password}) {
+            login: async function () {
                 try {
-                    const resp = await axios.post("http://localhost:8080/api/token/", 
-                        {
-                            "username": username ?? this.loginData.username,
-                            "password": password ?? this.loginData.password
-                        },
-                        {
-                            mode: 'cors', 
-                            credentials: 'same-origin', 
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                        }
-                    );
-                    if (resp.status === 200){
-                        Vue.prototype.loggedIn = true;
-                    } 
+                    await this.$store.dispatch('login', this.loginData)
+                    this.$router.push('/')
                 } catch (e) {
-                    console.log(e)
+                    this.loginError = true;
                 }
             }
         }
