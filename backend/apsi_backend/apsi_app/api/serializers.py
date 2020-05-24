@@ -44,9 +44,26 @@ class UserResetPasswordSerializer(serializers.ModelSerializer):
 
 
 class AdvertSerializer(serializers.ModelSerializer):
+ #   advert_category_name = serializers.StringRelatedField(read_only=True)
+ #   city_name = serializers.StringRelatedField(read_only=True)
+ #   promotion_name = serializers.StringRelatedField(read_only=True)
+ #   
+ #   advert_status_name = serializers.StringRelatedField(read_only=True)
+ #   
+
+    advert_category_name = serializers.ReadOnlyField(source='advert_category.name')
+    city_name = serializers.ReadOnlyField(source='city.name')
+    promotion_name = serializers.ReadOnlyField(source='promotion.name')
+    advert_status_name = serializers.ReadOnlyField(source='advert_status.name')
+
+    user_name = UserSerializer(read_only=True)
+    
+    subscribing_users_name = UserSerializer(many=True, read_only=True)
+
+
     class Meta:
         model = Advert
-        fields = '__all__'
+        fields = ['id', 'title', 'description', 'price', 'for_free', 'create_date', 'advert_category_name, city_name, promotion_name, user_name, advert_status_name', 'subscribing_users_name']
 
 
 class AdvertMessageSerializer(serializers.ModelSerializer):
