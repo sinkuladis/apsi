@@ -7,6 +7,7 @@ import AdNotFound from '@/views/AdNotFound'
 import UserPage from '@/views/UserPage'
 import NotFound from '@/views/NotFound'
 import ObservedAds from '@/views/ObservedAds'
+import store from '../store'
 
 const routes = [
     {
@@ -41,6 +42,7 @@ const routes = [
         path: '/userpage',
         name: 'Panel użytkownika',
         component: UserPage,
+        meta: { requiresAuth: true }
     },
     {
         path: '/not-found',
@@ -55,7 +57,24 @@ const routes = [
 
 Vue.use(VueRouter);
 
-export default new VueRouter({
+const router = new VueRouter({
     mode: 'history',
     routes
 })
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (!store.getters.isLoggedIn) {
+            next({
+                path: '/login',
+                query: { redirect: to.fullPath }
+            })
+        } else {
+            next()
+        }
+    } else {
+        next()
+    }
+})
+
+export default router;
