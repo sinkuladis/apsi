@@ -9,7 +9,7 @@
 </template>
 
 <script>
- // import axios from 'axios'
+ // 
   import HighlightsList from "@/components/HighlightsList";
 
   export default {
@@ -28,7 +28,7 @@
       loadAdInfo: async function() {
         try {
            //to be changed once backend ready
-          // const resp = await axios.get(`http://localhost:8080/api/adverts/${this.$route.params.id}/`);
+          // const resp = await this.$http.get(`http://localhost:8080/api/adverts/${this.$route.params.id}/`);
           // this.ads = resp.data;
           this.error = false
         } catch {

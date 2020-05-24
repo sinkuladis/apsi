@@ -15,7 +15,7 @@
         components: {
             BottomSection,
             Navbar
-        }
+        },
     }
 </script>
 
