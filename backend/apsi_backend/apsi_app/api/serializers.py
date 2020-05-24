@@ -58,12 +58,12 @@ class AdvertSerializer(serializers.ModelSerializer):
 
     user_name = UserSerializer(read_only=True)
     
-    subscribing_users_name = UserSerializer(many=True, read_only=True)
+    subscribing_users = UserSerializer(many=True, read_only=True)
 
 
     class Meta:
         model = Advert
-        fields = ['id', 'title', 'description', 'price', 'for_free', 'create_date', 'advert_category_name, city_name, promotion_name, user_name, advert_status_name', 'subscribing_users_name']
+        fields = ['id', 'title', 'description', 'price', 'for_free', 'create_date', 'advert_category_name, city_name, promotion_name, user_name, advert_status_name', 'subscribing_users']
 
 
 class AdvertMessageSerializer(serializers.ModelSerializer):
