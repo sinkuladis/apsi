@@ -3,8 +3,9 @@ from rest_framework.decorators import permission_classes, action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from ..models import Advert, AdvertMessage, User
-from .serializers import UserSerializer, AdvertSerializer, AdvertMessageSerializer, UserResetPasswordSerializer
+from ..models import Advert, AdvertMessage, User, ObservedAds
+from .serializers import UserSerializer, AdvertSerializer, AdvertMessageSerializer, UserResetPasswordSerializer, \
+    ObservedAdsSerializer
 
 
 class UserView(viewsets.ModelViewSet):
@@ -14,7 +15,7 @@ class UserView(viewsets.ModelViewSet):
     fields = ['id', 'email', 'username', 'last_name', 'first_name']
 
     @action(detail=True, permission_classes=[IsAuthenticated],
-                methods=['put'], url_path='password')
+            methods=['put'], url_path='password')
     def reset_user_password(self, request, pk=None):
         reset_password_serializer = UserResetPasswordSerializer(request.user, data=request.data)
         if reset_password_serializer.is_valid(raise_exception=True):
@@ -56,4 +57,10 @@ class AdvertView(viewsets.ModelViewSet):
 class AdvertMessageView(viewsets.ModelViewSet):
     queryset = AdvertMessage.objects.all()
     serializer_class = AdvertMessageSerializer
+    permission_classes = [permissions.AllowAny]
+
+
+class ObservedAdsView(viewsets.ModelViewSet):
+    queryset = ObservedAds.objects.all()
+    serializer_class = ObservedAdsSerializer
     permission_classes = [permissions.AllowAny]

@@ -79,8 +79,20 @@ class Advert(models.Model):
 
 class AdvertMessage(models.Model):
     from_user = models.ForeignKey(User, on_delete=models.CASCADE)
-    advert = models.ForeignKey(Advert, on_delete=models.CASCADE)
+    advert_id = models.ForeignKey(Advert, on_delete=models.CASCADE)
     content = models.CharField(max_length=3000)
 
     def __str__(self):
         return '%s' % (self.content[0:20])
+
+
+class ObservedAds(models.Model):
+    advert_id = models.ForeignKey(Advert, on_delete=models.CASCADE)
+    # quantity = models.PositiveSmallIntegerField(default=1)#IntegerField()
+    # product_id = models.PositiveSmallIntegerField(default=1) # i dont't understand this field
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE) # added, did not exist in the database model
+
+class AdvertItems(models.Model):
+    advert_id = models.ForeignKey(Advert, on_delete=models.CASCADE)
+    # quantity = models.PositiveSmallIntegerField(default=1)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from ..models import Advert, AdvertMessage, AdvertCategory, User, City, AdvertPromotion, AdvertStatus
+from ..models import Advert, AdvertMessage, AdvertCategory, User, AdvertItems, ObservedAds, AdvertPromotion, \
+    AdvertStatus, City
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -43,17 +44,14 @@ class UserResetPasswordSerializer(serializers.ModelSerializer):
         fields = ("password", 'new_password')
 
 
+# Advert Serializers
 class AdvertSerializer(serializers.ModelSerializer):
-
     advert_category = serializers.SlugRelatedField(slug_field='name', queryset=AdvertCategory.objects.all())
-    city = serializers.SlugRelatedField(slug_field = 'name', queryset=City.objects.all())
-    promotion = serializers.SlugRelatedField(slug_field = 'name', queryset=AdvertPromotion.objects.all())
-    advert_status = serializers.SlugRelatedField(slug_field = 'name', queryset=AdvertStatus.objects.all())
-    user = serializers.SlugRelatedField(slug_field = 'username', queryset=User.objects.all())
+    city = serializers.SlugRelatedField(slug_field='name', queryset=City.objects.all())
+    promotion = serializers.SlugRelatedField(slug_field='name', queryset=AdvertPromotion.objects.all())
+    advert_status = serializers.SlugRelatedField(slug_field='name', queryset=AdvertStatus.objects.all())
+    user = serializers.SlugRelatedField(slug_field='username', queryset=User.objects.all())
 
-    
-
-    
     subscribing_users = UserSerializer(many=True, read_only=True)
 
     class Meta:
@@ -62,6 +60,36 @@ class AdvertSerializer(serializers.ModelSerializer):
 
 
 class AdvertMessageSerializer(serializers.ModelSerializer):
+    advert = serializers.SlugRelatedField(slug_field='title', queryset=Advert.objects.all())
+    user = serializers.SlugRelatedField(slug_field='username', queryset=User.objects.all())
+
     class Meta:
         model = AdvertMessage
         fields = '__all__'
+
+
+class AdvertCategorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = AdvertCategory
+        fields = '__all__'
+
+
+class ObservedAdsSerializer(serializers.ModelSerializer):
+
+    observed_advert = serializers.SlugRelatedField(slug_field='title', queryset=Advert.objects.all())
+    user = serializers.SlugRelatedField(slug_field='username', queryset=User.objects.all())
+
+
+    class Meta:
+        model = ObservedAds
+        fields = '__all__'
+
+
+# class AdvertItemsSerializer(serializers.ModelSerializer):
+#     advert = serializers.SlugRelatedField(slug_field='title', queryset=Advert.objects.all())
+#     #user = serializers.SlugRelatedField(slug_field='username', queryset=User.objects.all())
+#
+#     class Meta:
+#         model = AdvertItems
+#         fields = '__all__'
