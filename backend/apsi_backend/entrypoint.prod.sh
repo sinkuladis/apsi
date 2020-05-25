@@ -10,6 +10,7 @@ then
 
     echo "PostgreSQL started"
 fi
+mkdir apsi_backend/static
 python manage.py collectstatic --noinput
 
 exec "$@"
