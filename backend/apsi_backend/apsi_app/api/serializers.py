@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from ..models import Advert, AdvertMessage, AdvertCategory, User
+from ..models import Advert, AdvertMessage, AdvertCategory, User, City, AdvertPromotion, AdvertStatus
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -44,26 +44,21 @@ class UserResetPasswordSerializer(serializers.ModelSerializer):
 
 
 class AdvertSerializer(serializers.ModelSerializer):
- #   advert_category_name = serializers.StringRelatedField(read_only=True)
- #   city_name = serializers.StringRelatedField(read_only=True)
- #   promotion_name = serializers.StringRelatedField(read_only=True)
- #   
- #   advert_status_name = serializers.StringRelatedField(read_only=True)
- #   
 
-    advert_category_name = serializers.ReadOnlyField(source='advert_category.name')
-    city_name = serializers.ReadOnlyField(source='city.name')
-    promotion_name = serializers.ReadOnlyField(source='promotion.name')
-    advert_status_name = serializers.ReadOnlyField(source='advert_status.name')
+    advert_category = serializers.SlugRelatedField(slug_field='name', queryset=AdvertCategory.objects.all())
+    city = serializers.SlugRelatedField(slug_field = 'name', queryset=City.objects.all())
+    promotion = serializers.SlugRelatedField(slug_field = 'name', queryset=AdvertPromotion.objects.all())
+    advert_status = serializers.SlugRelatedField(slug_field = 'name', queryset=AdvertStatus.objects.all())
+    user = serializers.SlugRelatedField(slug_field = 'username', queryset=User.objects.all())
 
-    user_name = UserSerializer(read_only=True)
+    
+
     
     subscribing_users = UserSerializer(many=True, read_only=True)
 
-
     class Meta:
         model = Advert
-        fields = ['id', 'title', 'description', 'price', 'for_free', 'create_date', 'advert_category_name', 'city_name', 'promotion_name', 'user_name', 'advert_status_name', 'subscribing_users']
+        fields = '__all__'
 
 
 class AdvertMessageSerializer(serializers.ModelSerializer):

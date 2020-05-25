@@ -53,4 +53,10 @@
 
 {"model": "apsi_app.AdvertStatus",	"pk": 1, "fields": { "name": "Aktywne"		  	}},
 {"model": "apsi_app.AdvertStatus",	"pk": 2, "fields": { "name": "Nieaktywne"		}},
-{"model": "apsi_app.AdvertStatus",	"pk": 3, "fields": { "name": "Zamknięte"		}}]
+{"model": "apsi_app.AdvertStatus",	"pk": 3, "fields": { "name": "Zamknięte"		}},
+
+{"model": "apsi_app.AdvertPromotion",	"pk": 1, "fields": { "name": "Sponsorowany", "description": "Produkt wystawiony przez sponsora strony"		}},
+{"model": "apsi_app.AdvertPromotion",	"pk": 2, "fields": { "name": "Reklamowany", "description": "Produkt wystawiony za dodatkową opłatą"	}},
+{"model": "apsi_app.AdvertPromotion",	"pk": 3, "fields": { "name": "Zwykły", "description": "Produkt wystawiony bezpłatnie"		}}
+
+]
