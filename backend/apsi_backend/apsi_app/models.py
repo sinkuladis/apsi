@@ -50,7 +50,7 @@ class AdvertCategory(models.Model):
         return '%s' % (self.name)
 
     class Meta:
-        verbose_name_plural = "AdvertCategories"
+        verbose_name_plural = "Advert categories"
 
 
 class AdvertPromotion(models.Model):
@@ -68,7 +68,7 @@ class AdvertStatus(models.Model):
         return '%s' % (self.name)
 
     class Meta:
-        verbose_name_plural = "AdvertStatus"
+        verbose_name_plural = "Advert status"
 
 
 class Advert(models.Model):
@@ -107,7 +107,7 @@ class ObservedAds(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)  # added, did not exist in the database model
 
     class Meta:
-        verbose_name_plural = "ObservedAds"
+        verbose_name_plural = "Observed ads"
 
 
 class AdvertItems(models.Model):
@@ -116,4 +116,4 @@ class AdvertItems(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name_plural = "AdvertItems"
+        verbose_name_plural = "Advert items"
