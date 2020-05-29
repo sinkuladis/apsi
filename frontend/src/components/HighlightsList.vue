@@ -1,15 +1,15 @@
 <template>
-    <div class="container">
+    <div v-bind:class="getListClass">
         <h2>{{title}}</h2>
         <div class="inner-container">
             <md-card v-for="item in items" :key="item.message">
-                <a href="#">
+                <a v-on:click="redirectTo(item.id)">
                     <img src="https://www.centrumrowerowe.pl/photo/product/rower-ns-bikes-eccentric-cromo-2-135709-f-sk6-w1550-h1080_2.png"/>
                     <span class="title">{{item.title}}</span>
                     <span class="price">{{item.price}}</span>
                 </a>
             </md-card>
-            <md-button class="md-raised">Zobacz więcej</md-button>
+            <md-button v-if="!column" class="md-raised">Zobacz więcej</md-button>
         </div>
     </div>
 </template>
@@ -17,7 +17,17 @@
 <script>
     export default {
         name: 'HighlightsList',
-        props: ['title', 'items']
+        props: ['title', 'items', 'column'],
+        methods: {
+            redirectTo: function(id) {
+                this.$router.push(`/ad/${id}`)
+            }
+        },
+        computed: {
+            getListClass: function() {
+                return this.column ? 'container type-column' : 'container';
+            }
+        }
     }
 </script>
 
@@ -54,6 +64,7 @@
                         display: flex;
                         flex-direction: column;
                         color: inherit;
+                        cursor: pointer;
 
                         .title {
                             color: darkslateblue;
@@ -73,6 +84,26 @@
             .md-button {
                 border-radius: 4px;
                 background: #eee;
+            }
+        }
+    }
+
+    .type-column {
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+        }
+        .inner-container {
+            flex-direction: column;
+
+            .md-card {
+                width: 50%;
+                padding: 10px 40px;
+                a {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                }
             }
         }
     }

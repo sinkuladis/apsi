@@ -31,14 +31,14 @@
         data: () => {
             return {
                     promotedItems: [
-                        { title: 'Promowany 1', price: "3zł"},
-                        { title: 'Promowany 2', price: "300zł"},
-                        { title: 'Promowany 3', price: "123zł"}
+                        { title: 'Promowany 1', price: "3zł", id: '0'}, 
+                        { title: 'Promowany 2', price: "300zł", id: '0'}, 
+                        { title: 'Promowany 3', price: "123zł", id: '0'}
                     ],
                     lastAdded: [
-                        { title: 'Ostatnio dodany 1', price: "54zł"},
-                        { title: 'Ostatnio dodany 2', price: "124zł"},
-                        { title: 'Ostatnio dodany 3', price: "500zł"}
+                        { title: 'Ostatnio dodany 1', price: "54zł", id: '0'}, 
+                        { title: 'Ostatnio dodany 2', price: "124zł", id: '0'}, 
+                        { title: 'Ostatnio dodany 3', price: "500zł", id: '0'}
                     ],
                     categories: [
                         { icon: 'mdi-car', name: 'Motoryzacja' },

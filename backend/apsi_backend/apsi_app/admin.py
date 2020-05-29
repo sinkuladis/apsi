@@ -1,13 +1,14 @@
 from django.contrib import admin
-from .models import Cities, Countries, Provinces, UsersCities, Adverts, Advert_Categories, Advert_Status, Advert_Messages, Advert_Promotions
+from .models import City, Country, Province, Advert, AdvertCategory, AdvertStatus, AdvertMessage, AdvertPromotion, ObservedAds, AdvertItems
 
 # Register your models here.
-admin.site.register(Cities)
-admin.site.register(Countries)
-admin.site.register(Provinces)
-admin.site.register(UsersCities)
-admin.site.register(Adverts)
-admin.site.register(Advert_Categories)
-admin.site.register(Advert_Status)
-admin.site.register(Advert_Messages)
-admin.site.register(Advert_Promotions)
+admin.site.register(City)
+admin.site.register(Country)
+admin.site.register(Province)
+admin.site.register(Advert)
+admin.site.register(AdvertCategory)
+admin.site.register(AdvertStatus)
+admin.site.register(AdvertMessage)
+admin.site.register(AdvertPromotion)
+admin.site.register(ObservedAds)
+admin.site.register(AdvertItems)

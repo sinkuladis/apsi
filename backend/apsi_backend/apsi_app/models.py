@@ -1,92 +1,119 @@
+from enum import Enum
+
 from django.db import models
 import datetime
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+
 # Create your models here.
-#User model
+# User model
 
-class Countries(models.Model):
+class Country(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return '%s' % (self.name)
 
-class Provinces(models.Model):
+    class Meta:
+        verbose_name_plural = "Counties"
+
+
+class Province(models.Model):
     name = models.CharField(max_length=100)
-    country_id = models.ForeignKey(Countries, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
 
     def __str__(self):
         return '%s' % (self.name)
 
-class Cities(models.Model):
-    name        = models.CharField(max_length=100)
-    country_id  = models.ForeignKey(Countries, on_delete=models.CASCADE)
-    province_id = models.ForeignKey(Provinces, on_delete=models.CASCADE)
+
+class City(models.Model):
+    name = models.CharField(max_length=100)
+    province = models.ForeignKey(Province, on_delete=models.CASCADE)
 
     def __str__(self):
         return '%s' % (self.name)
 
-class UsersCities(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    city_id = models.ForeignKey(Cities, on_delete=models.CASCADE)
+    class Meta:
+        verbose_name_plural = "Cities"
 
-    def __str__(self):
-        return '%s -- %s' % (self.user_id, self.city_id)
 
-class Subscription_Status(models.Model):
-    name = models.CharField(max_length=50)
+class User(AbstractUser):
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
 
-    def __str__(self):
-        return '%s' % (self.name)
 
-class UserSubcriptions(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    advert_id = models.ForeignKey('Adverts', on_delete=models.CASCADE)
-    subscription_status_id = models.ForeignKey(Subscription_Status, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return '%s' % (self.id)
-
-#Avert model
-class Advert_Categories(models.Model):
+# Avert model
+class AdvertCategory(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return '%s' % (self.name)
 
-class Advert_Promotions(models.Model):
-    name        = models.CharField(max_length=100)
+    class Meta:
+        verbose_name_plural = "Advert categories"
+
+
+class AdvertPromotion(models.Model):
+    name = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
 
     def __str__(self):
         return '%s' % (self.name)
 
-class Advert_Status(models.Model):
+
+class AdvertStatus(models.Model):
     name = models.CharField(max_length=50)
 
     def __str__(self):
         return '%s' % (self.name)
 
-class Adverts(models.Model):
-    title              = models.CharField(max_length=200)
-    description        = models.CharField(max_length=9000)
-    price              = models.FloatField(validators=[MinValueValidator(0.01), MaxValueValidator(1000000)])
-    for_free           = models.BooleanField(default=False)
-    advert_category_id = models.ForeignKey(Advert_Categories, on_delete=models.CASCADE, null=True, blank=True)
-    city_id            = models.ForeignKey(Cities, on_delete=models.CASCADE, null=True, blank=True)
-    create_date        = models.DateField(default=datetime.date.today)
-    user_id            = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    promotion_id       = models.ForeignKey(Advert_Promotions, on_delete=models.CASCADE, null=True, blank=True)
-    advert_status_id   = models.ForeignKey(Advert_Status, on_delete=models.CASCADE, null=True, blank=True)
+    class Meta:
+        verbose_name_plural = "Advert status"
+
+
+class Advert(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.CharField(max_length=9000)
+    price = models.FloatField(validators=[MinValueValidator(0.01), MaxValueValidator(1000000)])
+    for_free = models.BooleanField(default=False)
+    advert_category = models.ForeignKey(AdvertCategory, on_delete=models.CASCADE, related_name='category_name',
+                                        null=True, blank=True)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='city_name', null=True, blank=True)
+    create_date = models.DateField(default=datetime.date.today)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_name', null=True, blank=True)
+    promotion = models.ForeignKey(AdvertPromotion, on_delete=models.CASCADE, related_name='promotion_name', null=True,
+                                  blank=True)
+    advert_status = models.ForeignKey(AdvertStatus, on_delete=models.CASCADE, related_name='advert_status_name',
+                                      null=True, blank=True)
+    subscribing_users = models.ManyToManyField('User', 'subscribing_users')
 
     def __str__(self):
         return '%s' % (self.title)
 
-class Advert_Messages(models.Model):
-    from_user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    advert_id    = models.ForeignKey(Adverts, on_delete=models.CASCADE)
-    content      = models.CharField(max_length=3000)
+
+class AdvertMessage(models.Model):
+    from_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    advert_id = models.ForeignKey(Advert, on_delete=models.CASCADE)
+    content = models.CharField(max_length=3000)
 
     def __str__(self):
         return '%s' % (self.content[0:20])
+
+
+class ObservedAds(models.Model):
+    advert_id = models.ForeignKey(Advert, on_delete=models.CASCADE)
+    # quantity = models.PositiveSmallIntegerField(default=1)#IntegerField()
+    # product_id = models.PositiveSmallIntegerField(default=1) # i dont't understand this field
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)  # added, did not exist in the database model
+
+    class Meta:
+        verbose_name_plural = "Observed ads"
+
+
+class AdvertItems(models.Model):
+    advert_id = models.ForeignKey(Advert, on_delete=models.CASCADE)
+    # quantity = models.PositiveSmallIntegerField(default=1)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = "Advert items"
