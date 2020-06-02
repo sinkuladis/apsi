@@ -7,6 +7,7 @@ router.register('users', custom_views.UserView)
 router.register('adverts', custom_views.AdvertView)
 router.register('adverts/messages', custom_views.AdvertMessageView)
 router.register('adverts/observed', custom_views.ObservedAdsView)
+router.register('adverts/categories', custom_views.AdvertCategoryView)
 
 urlpatterns = [
     path('', include(router.urls)),

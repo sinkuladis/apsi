@@ -3,9 +3,9 @@ from rest_framework.decorators import permission_classes, action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from ..models import Advert, AdvertMessage, User, ObservedAds
+from ..models import Advert, AdvertMessage, User, ObservedAds, AdvertCategory
 from .serializers import UserSerializer, AdvertSerializer, AdvertMessageSerializer, UserResetPasswordSerializer, \
-    ObservedAdsSerializer
+    ObservedAdsSerializer, AdvertCategorySerializer
 
 
 class UserView(viewsets.ModelViewSet):
@@ -64,3 +64,15 @@ class ObservedAdsView(viewsets.ModelViewSet):
     queryset = ObservedAds.objects.all()
     serializer_class = ObservedAdsSerializer
     permission_classes = [permissions.AllowAny]
+
+
+class AdvertCategoryView(viewsets.ModelViewSet):
+    queryset = AdvertCategory.objects.all()
+    serializer_class = AdvertCategorySerializer
+    permission_classes = [permissions.AllowAny]
+
+    # def send(request):
+    #     p = AdvertCategory(name='MMoto')
+    #     p.save()
+
+
