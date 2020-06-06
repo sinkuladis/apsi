@@ -10,7 +10,12 @@ ENV PYTHONUNBUFFERED 1
 
 # install psycopg2 dependencies
 RUN apk update \
-    && apk add postgresql-dev gcc python3-dev musl-dev
+    && apk add --virtual build-deps gcc python3-dev musl-dev \
+    && apk add postgresql-dev gcc python3-dev musl-dev \
+    && apk add jpeg-dev zlib-dev libjpeg \
+    && apk del build-deps
+
+
 
 # install dependencies
 RUN pip install --upgrade pip

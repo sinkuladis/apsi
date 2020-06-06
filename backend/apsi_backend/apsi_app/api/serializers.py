@@ -1,7 +1,18 @@
+from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from ..models import Advert, AdvertMessage, AdvertCategory, User, AdvertItems, ObservedAds, AdvertPromotion, \
     AdvertStatus, City
+
+
+class CustomizedBase64ImageField(Base64ImageField):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def to_representation(self, file):
+        base64 = super().to_representation(file)
+        return f'data:image/{file.name.split(".")[1]};base64, {base64}'
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -46,6 +57,7 @@ class UserResetPasswordSerializer(serializers.ModelSerializer):
 
 # Advert Serializers
 class AdvertSerializer(serializers.ModelSerializer):
+    image = CustomizedBase64ImageField(represent_in_base64=True)
     advert_category = serializers.SlugRelatedField(slug_field='name', queryset=AdvertCategory.objects.all())
     city = serializers.SlugRelatedField(slug_field='name', queryset=City.objects.all())
     promotion = serializers.SlugRelatedField(slug_field='name', queryset=AdvertPromotion.objects.all())
@@ -57,6 +69,17 @@ class AdvertSerializer(serializers.ModelSerializer):
     class Meta:
         model = Advert
         fields = '__all__'
+
+
+class AdvertSerializerBrief(serializers.ModelSerializer):
+    advert_category = serializers.SlugRelatedField(slug_field='name', queryset=AdvertCategory.objects.all())
+    city = serializers.SlugRelatedField(slug_field='name', queryset=City.objects.all())
+    advert_status = serializers.SlugRelatedField(slug_field='name', queryset=AdvertStatus.objects.all())
+    user = serializers.SlugRelatedField(slug_field='username', queryset=User.objects.all())
+
+    class Meta:
+        model = Advert
+        fields = ('advert_category', 'city', 'advert_status', 'user', 'title', 'price')
 
 
 class AdvertMessageSerializer(serializers.ModelSerializer):

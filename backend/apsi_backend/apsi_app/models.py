@@ -86,6 +86,8 @@ class Advert(models.Model):
     advert_status = models.ForeignKey(AdvertStatus, on_delete=models.CASCADE, related_name='advert_status_name',
                                       null=True, blank=True)
     subscribing_users = models.ManyToManyField('User', 'subscribing_users')
+    image = models.ImageField(blank=True)
+
 
     def __str__(self):
         return '%s' % (self.title)
