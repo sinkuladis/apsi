@@ -1,35 +1,36 @@
 <template>
   <div class="main-body">
+    <p 
+      v-if="ads.length === 0"
+      class="observed-info"
+    >
+      Jeszcze niczego nie obserwujesz.
+    </p>
     <highlights-list 
-        title="Obserwowane"
-        column=true
-        :items=ads
+      v-else
+      title="Obserwowane"
+      column=true
+      :items=ads
     />
   </div>
 </template>
 
 <script>
- // 
   import HighlightsList from "@/components/HighlightsList";
 
   export default {
     components: { HighlightsList },
     data() {
       return {
-        ads: [
-          { title: 'Obserwowany 1', price: "3zł", id: '0'}, 
-          { title: 'Obserwowany 2', price: "300zł", id: '0'}, 
-          { title: 'Obserwowany 3', price: "123zł", id: '0'}
-        ],
+        ads: [],
         error: false
       }
     },
     methods: {
       loadAdInfo: async function() {
         try {
-           //to be changed once backend ready
-          // const resp = await this.$http.get(`http://localhost:8080/api/adverts/${this.$route.params.id}/`);
-          // this.ads = resp.data;
+          const resp = await this.$http.get(`http://localhost:8080/api/adverts/${this.$route.params.id}/`);
+          this.ads = resp.data;
           this.error = false
         } catch {
           this.error = true
@@ -49,5 +50,10 @@
         justify-content: center;
         align-items: center;
         padding-bottom: 10rem;
+    }
+
+    .observed-info {
+      margin: 40px;
+      font-size: 1.5rem;
     }
 </style>

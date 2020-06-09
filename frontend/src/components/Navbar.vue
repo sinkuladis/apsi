@@ -66,10 +66,6 @@
         name: 'Navbar',
         data() {
             return {
-                menuItems: [
-                    {title: 'Ogłoszenia'},
-                    {title: 'Ustawienia', to: '/userpage'}
-                ],
             }
         },
         computed: {
@@ -78,6 +74,13 @@
             },
             username: function() {
                 return this.$store.getters.user.username
+            },
+            menuItems: function() {
+                return [
+                    {title: 'Ogłoszenia', to: `/user/${this.$store.getters.user.id}/ads`},
+                    {title: 'Obserwowane', to: `/user/${this.$store.getters.user.id}/observed-ads`},
+                    {title: 'Ustawienia', to: '/userpage'}
+                ]
             }
         },
         methods: {

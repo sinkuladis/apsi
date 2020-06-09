@@ -7,6 +7,7 @@ import AdNotFound from '@/views/AdNotFound'
 import UserPage from '@/views/UserPage'
 import NotFound from '@/views/NotFound'
 import ObservedAds from '@/views/ObservedAds'
+import Ads from '@/views/Ads'
 import store from '../store'
 
 const routes = [
@@ -37,6 +38,11 @@ const routes = [
         path: '/user/:id/observed-ads',
         name: 'Obserwowane ogłoszenia',
         component: ObservedAds,
+    },
+    {
+        path: '/user/:id/ads',
+        name: 'Ogłoszenia',
+        component: Ads,
     },
     {
         path: '/userpage',
