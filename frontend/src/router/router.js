@@ -2,13 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home'
 import Login from "@/views/Login"
+import SubmitAdvert from "@/views/Adverts/SubmitAdvert"
 import AdPage from '@/views/AdPage'
 import AdNotFound from '@/views/AdNotFound'
 import UserPage from '@/views/UserPage'
 import NotFound from '@/views/NotFound'
 import ObservedAds from '@/views/ObservedAds'
+import store from '../store/store'
 import Ads from '@/views/Ads'
-import store from '../store'
 
 const routes = [
     {
@@ -28,6 +29,11 @@ const routes = [
         path: '/ad/:id',
         name: 'Ogłoszenie',
         component: AdPage,
+    },
+    {
+        path: '/ad/:id/edit',
+        name: 'Edytowanie ogłoszenia',
+        component: SubmitAdvert
     },
     {
         path: '/ad-not-found',
@@ -51,13 +57,18 @@ const routes = [
         meta: { requiresAuth: true }
     },
     {
+        path: '/submit-advert',
+        name: 'Dodanie ogłoszenia',
+        component: SubmitAdvert,
+    },
+    {
         path: '/not-found',
         name: 'Strona nie istnieje',
         component: NotFound,
     },
-    { 
-        path: '*', 
-        redirect: '/' 
+    {
+        path: '*',
+        redirect: '/'
     }
 ]
 

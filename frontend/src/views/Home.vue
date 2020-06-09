@@ -9,11 +9,11 @@
         </section>
         <section>
             <!--White area section-->
-            <highlights-list 
+            <highlights-list
                 title="Ogłoszenia promowane"
                 :items=promotedItems
             />
-            <highlights-list 
+            <highlights-list
                 title="Ostatnio dodane"
                 :items=lastAdded
             />
@@ -29,7 +29,7 @@
         name: 'Home',
         components: { HighlightsList, CategoriesPicker, SearchSection},
         data: () => {
-            return { 
+            return {
                     promotedItems: [
                         { title: 'Promowany 1', price: "3zł", id: '0'}, 
                         { title: 'Promowany 2', price: "300zł", id: '0'}, 
@@ -41,17 +41,17 @@
                         { title: 'Ostatnio dodany 3', price: "500zł", id: '0'}
                     ],
                     categories: [
-                        { icon: 'mdi-car', name: 'Motoryzacja' }, 
-                        { icon: 'mdi-home', name: 'Nieruchomości' }, 
-                        { icon: 'mdi-worker', name: 'Praca' }, 
-                        { icon: 'mdi-sofa', name: 'Dom i ogród' }, 
-                        { icon: 'mdi-laptop', name: 'Elektronika' }, 
-                        { icon: 'mdi-tshirt-crew', name: 'Moda' }, 
-                        { icon: 'mdi-dog-side', name: 'Zwierzęta' }, 
-                        { icon: 'mdi-human-child', name: 'Dla dzieci' }, 
-                        { icon: 'mdi-basketball', name: 'Sport' }, 
-                        { icon: 'mdi-book-open', name: 'Edukacja' }, 
-                        { icon: 'mdi-guitar-acoustic', name: 'Muzyka' }, 
+                        { icon: 'mdi-car', name: 'Motoryzacja' },
+                        { icon: 'mdi-home', name: 'Nieruchomości' },
+                        { icon: 'mdi-worker', name: 'Praca' },
+                        { icon: 'mdi-sofa', name: 'Dom i ogród' },
+                        { icon: 'mdi-laptop', name: 'Elektronika' },
+                        { icon: 'mdi-tshirt-crew', name: 'Moda' },
+                        { icon: 'mdi-dog-side', name: 'Zwierzęta' },
+                        { icon: 'mdi-human-child', name: 'Dla dzieci' },
+                        { icon: 'mdi-basketball', name: 'Sport' },
+                        { icon: 'mdi-book-open', name: 'Edukacja' },
+                        { icon: 'mdi-guitar-acoustic', name: 'Muzyka' },
                         { icon: 'mdi-postage-stamp', name: 'Hobby' }
                     ]
                 }

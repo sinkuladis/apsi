@@ -38,13 +38,8 @@
 </template>
 
 <script>
-    // import SearchBar from "./SearchBar";
-
     export default {
-        name: 'SearchSection',
-        components: {
-            // SearchBar
-        }
+        name: 'SearchSection'
     }
 </script>
 

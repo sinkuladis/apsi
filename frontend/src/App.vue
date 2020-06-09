@@ -2,7 +2,7 @@
     <v-app id="app" class="grey lighten-3">
         <navbar/>
         <router-view></router-view>
-        <bottom-section class="footer"></bottom-section>
+        <bottom-section></bottom-section>
     </v-app>
 </template>
 
