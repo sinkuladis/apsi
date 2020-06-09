@@ -3,9 +3,9 @@ from rest_framework.decorators import permission_classes, action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from ..models import Advert, AdvertMessage, User, ObservedAds
+from ..models import Advert, AdvertMessage, User, ObservedAds, AdvertCategory
 from .serializers import UserSerializer, AdvertSerializer, AdvertMessageSerializer, UserResetPasswordSerializer, \
-    ObservedAdsSerializer
+    ObservedAdsSerializer, AdvertCategorySerializer, AdvertSerializerBrief
 
 
 class UserView(viewsets.ModelViewSet):
@@ -42,7 +42,6 @@ class UserView(viewsets.ModelViewSet):
 
 class AdvertView(viewsets.ModelViewSet):
     queryset = Advert.objects.all()
-    serializer_class = AdvertSerializer
     permission_classes = [permissions.AllowAny]
     filterset_fields = ('user', 'advert_category', 'city', 'promotion', 'advert_status')
 
@@ -52,6 +51,13 @@ class AdvertView(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return AdvertSerializerBrief
+        if self.action == 'retrieve':
+            return AdvertSerializer
+        return AdvertSerializer
 
 
 class AdvertMessageView(viewsets.ModelViewSet):
@@ -64,3 +70,12 @@ class ObservedAdsView(viewsets.ModelViewSet):
     queryset = ObservedAds.objects.all()
     serializer_class = ObservedAdsSerializer
     permission_classes = [permissions.AllowAny]
+
+
+class AdvertCategoryView(viewsets.ModelViewSet):
+    queryset = AdvertCategory.objects.all()
+    serializer_class = AdvertCategorySerializer
+    permission_classes = [permissions.DjangoModelPermissionsOrAnonReadOnly]
+
+
+

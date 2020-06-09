@@ -7,3 +7,5 @@ pyyaml==5.3.1
 uritemplate==3.0.1
 djangorestframework_simplejwt==4.4.0
 django_filter==2.2.0
+Pillow==7.1.2
+django-extra-fields==2.0.5
