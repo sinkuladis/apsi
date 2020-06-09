@@ -9,6 +9,7 @@ import UserPage from '@/views/UserPage'
 import NotFound from '@/views/NotFound'
 import ObservedAds from '@/views/ObservedAds'
 import store from '../store/store'
+import Ads from '@/views/Ads'
 
 const routes = [
     {
@@ -43,6 +44,11 @@ const routes = [
         path: '/user/:id/observed-ads',
         name: 'Obserwowane ogłoszenia',
         component: ObservedAds,
+    },
+    {
+        path: '/user/:id/ads',
+        name: 'Ogłoszenia',
+        component: Ads,
     },
     {
         path: '/userpage',
