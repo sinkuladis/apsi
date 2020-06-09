@@ -6,7 +6,7 @@ import 'vue-material/dist/vue-material.min.css'
 import vuetify from '@/plugins/vuetify'
 import VueSession from 'vue-session'
 import Axios from 'axios'
-import store from './store'
+import store from './store/store'
 
 
 Vue.use(VueMaterial)

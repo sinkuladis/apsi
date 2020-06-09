@@ -8,7 +8,7 @@ import AdNotFound from '@/views/AdNotFound'
 import UserPage from '@/views/UserPage'
 import NotFound from '@/views/NotFound'
 import ObservedAds from '@/views/ObservedAds'
-import store from '../store'
+import store from '../store/store'
 
 const routes = [
     {
@@ -30,6 +30,11 @@ const routes = [
         component: AdPage,
     },
     {
+        path: '/ad/:id/edit',
+        name: 'Edytowanie ogłoszenia',
+        component: SubmitAdvert
+    },
+    {
         path: '/ad-not-found',
         name: 'Ogłoszenie nieznalezione',
         component: AdNotFound,
@@ -46,13 +51,18 @@ const routes = [
         meta: { requiresAuth: true }
     },
     {
+        path: '/submit-advert',
+        name: 'Dodanie ogłoszenia',
+        component: SubmitAdvert,
+    },
+    {
         path: '/not-found',
         name: 'Strona nie istnieje',
         component: NotFound,
     },
-    { 
-        path: '*', 
-        redirect: '/' 
+    {
+        path: '*',
+        redirect: '/'
     }
 ]
 
