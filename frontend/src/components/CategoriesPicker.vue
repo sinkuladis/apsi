@@ -4,6 +4,7 @@
             <md-button 
                 class="md-raised md-primary category"
                 v-for="category in categories" :key="category.message"
+                @click="onCategoryClick(category.name)"
             >
                 <span><v-icon large>{{category.icon}}</v-icon></span>
                 <span>{{category.name}}</span>
@@ -15,7 +16,7 @@
 <script>
     export default {
         name: 'CategoriesPicker',
-        props: ['categories']
+        props: ['categories', 'onCategoryClick']
     }
 </script>
 

@@ -5,9 +5,17 @@
             <search-section />
             <categories-picker
                 :categories=categories
+                :onCategoryClick=loadAdsByCategory
             />
         </section>
-        <section>
+        <section v-if="isSearched">
+            <highlights-list
+                title="Ogłoszenia promowane"
+                column="true"
+                :items=searchedAds
+            />
+        </section>
+        <section v-else>
             <!--White area section-->
             <highlights-list
                 title="Ogłoszenia promowane"
@@ -31,14 +39,14 @@
         data: () => {
             return {
                     promotedItems: [
-                        { title: 'Promowany 1', price: "3zł", id: '0'}, 
-                        { title: 'Promowany 2', price: "300zł", id: '0'}, 
-                        { title: 'Promowany 3', price: "123zł", id: '0'}
+                        { title: 'Promowany 1', price: "3", id: '0'}, 
+                        { title: 'Promowany 2', price: "300", id: '0'}, 
+                        { title: 'Promowany 3', price: "123", id: '0'}
                     ],
                     lastAdded: [
-                        { title: 'Ostatnio dodany 1', price: "54zł", id: '0'}, 
-                        { title: 'Ostatnio dodany 2', price: "124zł", id: '0'}, 
-                        { title: 'Ostatnio dodany 3', price: "500zł", id: '0'}
+                        { title: 'Ostatnio dodany 1', price: "54", id: '0'}, 
+                        { title: 'Ostatnio dodany 2', price: "124", id: '0'}, 
+                        { title: 'Ostatnio dodany 3', price: "500", id: '0'}
                     ],
                     categories: [
                         { icon: 'mdi-car', name: 'Motoryzacja' },
@@ -53,9 +61,22 @@
                         { icon: 'mdi-book-open', name: 'Edukacja' },
                         { icon: 'mdi-guitar-acoustic', name: 'Muzyka' },
                         { icon: 'mdi-postage-stamp', name: 'Hobby' }
-                    ]
+                    ],
+                    isSearched: false,
+                    searchedAds: []
                 }
-        }
+        },
+        methods: {
+            loadAdsByCategory: async function(categoryName) {
+                    try {
+                        const resp = await this.$http.get(`/api/adverts/`, { params: { advert_category: categoryName } });
+                        this.searchedAds = resp.data;
+                        this.isSearched = true
+                    } catch {
+                       console.log("kek") 
+                    }
+                }
+            }
     }
 </script>
 

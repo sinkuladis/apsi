@@ -4,9 +4,13 @@
         <div class="inner-container">
             <md-card v-for="item in items" :key="item.message">
                 <a v-on:click="redirectTo(item.id)">
+                    <!-- <img v-bind:src="ad.image"/> to replace when backend error fixed-->
                     <img src="https://www.centrumrowerowe.pl/photo/product/rower-ns-bikes-eccentric-cromo-2-135709-f-sk6-w1550-h1080_2.png"/>
-                    <span class="title">{{item.title}}</span>
-                    <span class="price">{{item.price}}</span>
+                    <v-col class="inner">
+                        <span class="title">{{item.title}}</span>
+                        <span>{{item.advert_category}}</span>
+                    </v-col>
+                    <span class="price">{{item.price}}zł</span>
                 </a>
             </md-card>
             <md-button v-if="!column" class="md-raised">Zobacz więcej</md-button>
@@ -98,7 +102,7 @@
 
             .md-card {
                 width: 50%;
-                padding: 10px 40px;
+                padding: 10px 20px;
                 a {
                     flex-direction: row;
                     justify-content: space-between;
@@ -106,5 +110,10 @@
                 }
             }
         }
+    }
+
+    .inner {
+        display: flex;
+        flex-direction: column;
     }
 </style>

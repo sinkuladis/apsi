@@ -1,13 +1,20 @@
 <template>
   <div class="main-body">
     <div class="header">
-      <span><strong>Kategoria:</strong> Dom i ogród</span>
+      <span><strong>Kategoria:</strong>{{ad.advert_category}}</span>
       <span><strong>Zamieszczone:</strong> {{ad.create_date}}</span>
     </div>
-    <img src="https://www.centrumrowerowe.pl/photo/product/rower-ns-bikes-eccentric-cromo-2-135709-f-sk6-w1550-h1080_2.png"/>       
-    <h1 class="ad-title">{{ad.title}} <span>{{ad.for_free ? "Darmowy" : ad.price + "zł"}}</span></h1>
-    <span class="city">Warszawa</span>
-    <span class="seller"><strong>Wystawiający:</strong> <a>{{ad.user_id}}</a></span>
+    <v-row>
+      <v-col cols="6">
+        <img v-bind:src="ad.image"/> 
+      </v-col> 
+      <v-col cols="6" class="details">
+        <h1 class="ad-title">{{ad.title}}</h1>
+        <p class="price">{{ad.for_free ? "Darmowy" : ad.price + "zł"}}</p>
+        <p class="seller"><strong>Wystawiający:</strong> <a>{{ad.user}}</a></p>
+        <p class="city"><strong>Lokalizacja:</strong> {{ad.city}}</p>
+      </v-col> 
+    </v-row>      
     <p class="description">{{ad.description}}</p>
   </div>
 </template>
@@ -20,6 +27,7 @@
       return {
         ad: {
           "title": "Rower",
+          "image": "",
           "description": "PEGASUS ALU COMFORT MILLENNIUM MADE IN GERMANY \
                           Rower w stanie bardzo dobrym, zdjęcia realne \
                           Amortyzowana solidna rama aluminiowa \
@@ -31,10 +39,10 @@
                           Więcej informacji pod telefonem",
           "price": 100,
           "for_free": false,
-          "advert_category_id": 0,
-          "city_id": 0,
+          "advert_category": "",
+          "city": "",
           "create_date": "2020-05-21",
-          "user_id": "1235142",
+          "user": "",
           "promotion_id": 0,
           "advert_status_id": 0
         }
@@ -51,9 +59,7 @@
       }
     },
     created() {
-      if(this.$route.params.id !== "0"){ //for dev purposes
-        this.loadAdInfo();
-      }
+      this.loadAdInfo();
     }
   }
 </script>
@@ -74,15 +80,21 @@
       }
   }
 
+  .details {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+
   .ad-title {
     font-size: 2.5rem;
     text-align: center;
+  }
 
-    span {
-      margin: 0 auto;
-      font-size: 0.5em;
-      color: #666;
-    }
+  .price {
+    margin: 0 auto;
+    color: #666;
   }
 
   .description {
@@ -92,8 +104,9 @@
 
   .city {
     font-size: 1rem;
-    color: darkblue;
+    color: #666;
     margin: 0;
+    text-align: center;
   }
 
   .header {
@@ -112,5 +125,7 @@
     font-size: 1rem;
     color: #666;
     margin: 0;
+    text-align: center;
+    margin: 10px;
   }
 </style>

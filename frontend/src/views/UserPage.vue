@@ -18,19 +18,6 @@
           <v-col cols="12">
               <v-text-field dense outlined v-model="user.email" label="Email">
               </v-text-field>
-          </v-col>               
-          <v-col cols="12">
-              <v-text-field
-                      dense
-                      outlined
-                      flat
-                      label="Hasło"
-                      :append-icon="showPass ? 'mdi-eye' : 'mdi-eye-off'"
-                      :type="showPass ? 'text' : 'password'"
-                      counter
-                        v-model="user.password"
-                      @click:append="showPass = !showPass">
-              </v-text-field>
           </v-col>
       </v-row>
       <v-row justify="center">
@@ -59,7 +46,7 @@
   export default {
     data() {
       return {
-        user: this.$store.getters.user,
+        user: {...this.$store.getters.user},
         error: false,
         success: false,
         showPass: false,

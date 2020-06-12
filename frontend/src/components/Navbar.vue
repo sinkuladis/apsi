@@ -63,10 +63,6 @@
 <script>
     export default {
         name: 'Navbar',
-        data() {
-            return {
-            }
-        },
         computed: {
             isLoggedIn: function() {
                 return this.$store.getters.isLoggedIn

@@ -107,7 +107,7 @@ const actions = {
     updateUserData({commit}, data){
         return new Promise((resolve, reject) => {
             commit('update_user_data_request')
-            axios({url: `/api/users/${data.id}/`, data: data, method: 'PUT'})
+            axios({url: `/api/users/${data.id}/`, data: data, method: 'PATCH'})
                 .then((resp) => {
                     commit('update_user_data_success', resp.data)
                     resolve(resp)

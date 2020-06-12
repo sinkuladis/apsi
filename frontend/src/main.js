@@ -18,6 +18,7 @@ Vue.prototype.$store = store;
 const token = localStorage.getItem('token')
 if (token) {
   Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+  Vue.prototype.$store.dispatch('getUserData', token)
 }
 
 new Vue({
