@@ -1,7 +1,7 @@
 from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from ..models import Advert, AdvertMessage, AdvertCategory, User, AdvertItems, ObservedAds, AdvertPromotion, \
+from ..models import Advert, AdvertMessage, AdvertCategory, User, AdvertItems, AdvertPromotion, \
     AdvertStatus, City
 
 
@@ -57,7 +57,7 @@ class UserResetPasswordSerializer(serializers.ModelSerializer):
 
 # Advert Serializers
 class AdvertSerializer(serializers.ModelSerializer):
-    image = CustomizedBase64ImageField(represent_in_base64=True)
+    image = CustomizedBase64ImageField(represent_in_base64=True, )
     advert_category = serializers.SlugRelatedField(slug_field='name', queryset=AdvertCategory.objects.all())
     city = serializers.SlugRelatedField(slug_field='name', queryset=City.objects.all())
     promotion = serializers.SlugRelatedField(slug_field='name', queryset=AdvertPromotion.objects.all())
@@ -97,16 +97,6 @@ class AdvertCategorySerializer(serializers.ModelSerializer):
         model = AdvertCategory
         fields = '__all__'
 
-
-class ObservedAdsSerializer(serializers.ModelSerializer):
-
-    observed_advert = serializers.SlugRelatedField(slug_field='title', queryset=Advert.objects.all())
-    user = serializers.SlugRelatedField(slug_field='username', queryset=User.objects.all())
-
-
-    class Meta:
-        model = ObservedAds
-        fields = '__all__'
 
 
 # class AdvertItemsSerializer(serializers.ModelSerializer):

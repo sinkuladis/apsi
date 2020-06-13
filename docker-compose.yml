@@ -17,6 +17,8 @@ services:
       - db
     env_file:
       - backend/apsi_backend/.env.dev
+    volumes:
+      - media:/media
   db:
     image: postgres:12.0-alpine
     volumes:
@@ -30,3 +32,4 @@ services:
 
 volumes:
   postgres_data:
+  media:
