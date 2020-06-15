@@ -11,8 +11,9 @@ class CustomizedBase64ImageField(Base64ImageField):
         super().__init__(*args, **kwargs)
 
     def to_representation(self, file):
-        base64 = super().to_representation(file)
-        return f'data:image/{file.name.split(".")[1]};base64, {base64}'
+        if file:
+            base64 = super().to_representation(file)
+            return f'data:image/{file.name.split(".")[1]};base64, {base64}'
 
 
 class UserSerializer(serializers.ModelSerializer):
