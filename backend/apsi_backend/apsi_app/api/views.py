@@ -111,4 +111,16 @@ class AdvertCategoryView(viewsets.ReadOnlyModelViewSet):
     permission_classes = [permissions.AllowAny]
 
 
+class AdvertLatest(viewsets.ModelViewSet):
+    queryset = Advert.objects.all().order_by('-create_date')[:10]
+    serializer_class = AdvertSerializer
+    permission_classes = [permissions.AllowAny]
+    filterset_fields = ('user', 'advert_category', 'city', 'promotion', 'advert_status')
+
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return AdvertSerializerBrief
+        if self.action == 'retrieve':
+            return AdvertSerializer
+        return AdvertSerializer
 
