@@ -51,7 +51,8 @@ class UserView(viewsets.ModelViewSet):
 class AdvertView(viewsets.ModelViewSet):
     queryset = Advert.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    filterset_fields = ('user', 'advert_category', 'city', 'promotion', 'advert_status')
+    filterset_fields = ('title', 'user', 'advert_category', 'city', 'promotion', 'advert_status')
+
 
     def partial_update(self, request, *args, **kwargs):
         instance = self.get_object()
