@@ -99,7 +99,7 @@ class AdvertSerializerBrief(serializers.ModelSerializer):
 
     class Meta:
         model = Advert
-        fields = ('advert_category', 'city', 'advert_status', 'user', 'title', 'price', 'image')
+        fields = ('id', 'advert_category', 'city', 'advert_status', 'user', 'title', 'price', 'image')
 
 
 class AdvertMessageSerializer(serializers.ModelSerializer):
