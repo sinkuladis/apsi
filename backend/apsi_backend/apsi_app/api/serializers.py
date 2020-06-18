@@ -81,7 +81,7 @@ class AdvertSerializer(serializers.ModelSerializer):
     city = serializers.SlugRelatedField(slug_field='name', queryset=City.objects.all())
     promotion = serializers.SlugRelatedField(slug_field='name', queryset=AdvertPromotion.objects.all())
     advert_status = serializers.SlugRelatedField(slug_field='name', queryset=AdvertStatus.objects.all())
-    user = serializers.SlugRelatedField(slug_field='username', queryset=User.objects.all())
+    user_name = serializers.SlugRelatedField(slug_field='username', queryset=User.objects.all())
 
     subscribing_users = UserSerializer(many=True, read_only=True)
 
