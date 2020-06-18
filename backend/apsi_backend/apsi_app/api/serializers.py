@@ -1,6 +1,7 @@
 from base64 import b64encode
 from io import BytesIO
 from drf_extra_fields.fields import Base64ImageField
+from drf_extra_fields.relations import PresentablePrimaryKeyRelatedField
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from ..models import Advert, AdvertMessage, AdvertCategory, User, AdvertPromotion, \
@@ -63,6 +64,12 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
+class UserSerializerBrief(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('id', 'username')
+
 class UserResetPasswordSerializer(serializers.ModelSerializer):
     password = serializers.CharField(source='user.password', style={'input_type': 'password'},
                                      max_length=20, min_length=8)
@@ -81,8 +88,10 @@ class AdvertSerializer(serializers.ModelSerializer):
     city = serializers.SlugRelatedField(slug_field='name', queryset=City.objects.all())
     promotion = serializers.SlugRelatedField(slug_field='name', queryset=AdvertPromotion.objects.all())
     advert_status = serializers.SlugRelatedField(slug_field='name', queryset=AdvertStatus.objects.all())
-    user_name = serializers.SlugRelatedField(slug_field='username', queryset=User.objects.all())
-
+    user = PresentablePrimaryKeyRelatedField(
+        queryset=User.objects.all(),
+        presentation_serializer=UserSerializerBrief,
+    )
     subscribing_users = UserSerializer(many=True, read_only=True)
 
     class Meta:
@@ -94,7 +103,10 @@ class AdvertSerializerBrief(serializers.ModelSerializer):
     advert_category = serializers.SlugRelatedField(slug_field='name', queryset=AdvertCategory.objects.all())
     city = serializers.SlugRelatedField(slug_field='name', queryset=City.objects.all())
     advert_status = serializers.SlugRelatedField(slug_field='name', queryset=AdvertStatus.objects.all())
-    user = serializers.SlugRelatedField(slug_field='username', queryset=User.objects.all())
+    user = PresentablePrimaryKeyRelatedField(
+        queryset=User.objects.all(),
+        presentation_serializer=UserSerializerBrief,
+    )
     image = ThumbnailImageField(represent_in_base64=True)
 
     class Meta:
