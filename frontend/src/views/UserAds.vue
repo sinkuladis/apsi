@@ -4,10 +4,15 @@
       v-if="ads.length === 0"
       class="observed-info"
     >
-      Jeszcze nie umieściłeś ogłoszenia.
+      <span v-if="this.$route.params.id === this.$store.getters.user.id">
+        Jeszcze nie umieściłeś ogłoszenia.
+      </span>
+      <span v-else>
+        Sprzedawca jeszcze nie umieścił ogłoszeń. 
+      </span>
     </p>
     <v-container v-else style="width: 100%">
-      <div class="options">
+      <div class="options" v-if="this.$route.params.id === this.$store.getters.user.id">
         <v-btn @click="changeSelection('Aktywne')">Aktywne</v-btn>
         <v-btn @click="changeSelection('Zakończone')">Zakończone</v-btn>
         <v-btn @click="changeSelection('Oczekujące')">Oczekujące</v-btn>
@@ -39,7 +44,7 @@
         try {
           const resp = await this.$http.get(`/api/adverts/`, {params: {user: this.$route.params.id}});
           this.ads = resp.data;
-          this.changeSelection(this.selectedType)
+          this.shownAds = this.ads.filter(ad => ad.advert_status === this.selectedType)
           this.error = false
         } catch {
           this.error = true

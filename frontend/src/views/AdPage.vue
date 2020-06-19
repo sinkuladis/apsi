@@ -11,7 +11,7 @@
       <v-col cols="6" class="details">
         <h1 class="ad-title">{{ad.title}}</h1>
         <p class="price">{{ad.for_free ? "Darmowy" : ad.price + "zł"}}</p>
-        <p class="seller"><strong>Wystawiający:</strong> <a>{{ad.user}}</a></p>
+        <p class="seller"><strong>Wystawiający:</strong> <a @click="redirectToSeller(ad.user.id)">{{ad.user.username}}</a></p>
         <p class="city"><strong>Lokalizacja:</strong> {{ad.city}}</p>
       </v-col> 
     </v-row>      
@@ -54,8 +54,11 @@
           const resp = await this.$http.get(`/api/adverts/${this.$route.params.id}/`);
           this.ad = resp.data;
         } catch {
-          this.$router.push('/ad-not-found')
+          this.$router.replace('/ad-not-found')
         }
+      },
+      redirectToSeller: function(id) {
+          this.$router.push(`/user/${id}/ads`)
       }
     },
     created() {

@@ -240,7 +240,7 @@
                             this.control.showSnackbar = true;
                         })
                 } else {
-                    this.data.user = this.$store.getters.user.username
+                    this.data.user = this.$store.getters.user.id
                     this.data.create_date = this.currentDate()
                     await axios.post('/api/adverts/', this.data)
                         .then(() => {

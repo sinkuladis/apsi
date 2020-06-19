@@ -4,8 +4,7 @@
         <div class="inner-container">
             <md-card v-for="item in items" :key="item.message">
                 <a v-on:click="redirectTo(item.id)">
-                    <!-- <img v-bind:src="ad.image"/> to replace when backend error fixed-->
-                    <img src="https://www.centrumrowerowe.pl/photo/product/rower-ns-bikes-eccentric-cromo-2-135709-f-sk6-w1550-h1080_2.png"/>
+                    <img v-bind:src="item.image"/> 
                     <v-col class="inner">
                         <span class="title">{{item.title}}</span>
                         <span>{{item.advert_category}}</span>
@@ -13,7 +12,7 @@
                     <span class="price">{{item.price}}zł</span>
                 </a>
             </md-card>
-            <md-button v-if="!column" class="md-raised">Zobacz więcej</md-button>
+            <md-button v-if="!column" class="md-raised" @click="onClick">Zobacz więcej</md-button>
         </div>
     </div>
 </template>
@@ -21,7 +20,7 @@
 <script>
     export default {
         name: 'HighlightsList',
-        props: ['title', 'items', 'column'],
+        props: ['title', 'items', 'column', 'onClick'],
         methods: {
             redirectTo: function(id) {
                 this.$router.push(`/ad/${id}`)

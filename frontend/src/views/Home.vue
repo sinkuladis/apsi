@@ -8,22 +8,12 @@
                 :onCategoryClick=loadAdsByCategory
             />
         </section>
-        <section v-if="isSearched">
-            <highlights-list
-                title="Ogłoszenia promowane"
-                column="true"
-                :items=searchedAds
-            />
-        </section>
-        <section v-else>
+        <section v-if="lastAdded.length !== 0">
             <!--White area section-->
-            <highlights-list
-                title="Ogłoszenia promowane"
-                :items=promotedItems
-            />
             <highlights-list
                 title="Ostatnio dodane"
                 :items=lastAdded
+                :onClick="showMoreLastAdded"
             />
         </section>
     </div>
@@ -38,16 +28,7 @@
         components: { HighlightsList, CategoriesPicker, SearchSection},
         data: () => {
             return {
-                    promotedItems: [
-                        { title: 'Promowany 1', price: "3", id: '0'}, 
-                        { title: 'Promowany 2', price: "300", id: '0'}, 
-                        { title: 'Promowany 3', price: "123", id: '0'}
-                    ],
-                    lastAdded: [
-                        { title: 'Ostatnio dodany 1', price: "54", id: '0'}, 
-                        { title: 'Ostatnio dodany 2', price: "124", id: '0'}, 
-                        { title: 'Ostatnio dodany 3', price: "500", id: '0'}
-                    ],
+                    lastAdded: [],
                     categories: [
                         { icon: 'mdi-car', name: 'Motoryzacja' },
                         { icon: 'mdi-home', name: 'Nieruchomości' },
@@ -66,6 +47,9 @@
                     searchedAds: []
                 }
         },
+        created() {
+            this.loadLastAdded();
+        },
         methods: {
             loadAdsByCategory: async function(categoryName) {
                     try {
@@ -75,8 +59,20 @@
                     } catch {
                        console.log("kek") 
                     }
+                },
+            loadLastAdded: async function() {
+                try {
+                    const resp = await this.$http.get(`/api/advertslatest/`);
+                    this.lastAdded = resp.data.slice(0,3)
+                    this.error = false
+                } catch {
+                    this.error = true
                 }
+            },
+            showMoreLastAdded: function() {
+                this.$router.push(`/latest`)
             }
+        }
     }
 </script>
 

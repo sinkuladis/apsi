@@ -1,17 +1,12 @@
 <template>
   <div class="main-body">
-    <p 
-      v-if="ads.length === 0"
-      class="observed-info"
-    >
-      Jeszcze niczego nie obserwujesz.
-    </p>
-    <highlights-list 
-      v-else
-      title="Obserwowane"
-      column=true
-      :items=ads
-    />
+    <v-container style="width: 100%">
+      <highlights-list
+        column=true
+        title="Ostatnio dodane"
+        :items=ads
+      />
+    </v-container>
   </div>
 </template>
 
@@ -29,7 +24,7 @@
     methods: {
       loadAdInfo: async function() {
         try {
-          const resp = await this.$http.get(`/api/adverts/${this.$route.params.id}/observed/`);
+          const resp = await this.$http.get(`/api/advertslatest/`);
           this.ads = resp.data;
           this.error = false
         } catch {
@@ -55,5 +50,14 @@
     .observed-info {
       margin: 40px;
       font-size: 1.5rem;
+    }
+    
+    .options {
+      display: flex;
+      justify-content: center;
+
+      button {
+        margin: 5px;
+      }
     }
 </style>
