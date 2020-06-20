@@ -76,7 +76,12 @@
         methods: {
             search: async function() {
                 await this.$store.dispatch('searchAdverts', this.data)
-                this.$router.push('/search')
+                    .then(() => {
+                        this.$router.push('/search')
+                    }).catch(() => {
+                        this.$router.push('/ad-not-found')
+                    })
+
             }
         }
     }

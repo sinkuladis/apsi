@@ -26,13 +26,10 @@ const actions = {
             axios({
                 method: 'GET',
                 url: '/api/adverts',
-                data: data,
-                // credentials: 'include',
-                // headers: {'Authorization': 'Bearer ' + this.$store.getters.token}
+                data: data
             }).then((response) => {
                 commit('searchSuccess')
                 commit('storeSearch', response.data)
-                console.log(response.data)
                 resolve(response)
             }).catch((error) => {
                 commit('searchError')

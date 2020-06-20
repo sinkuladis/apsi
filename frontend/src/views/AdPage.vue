@@ -13,8 +13,12 @@
         <p class="price">{{ad.for_free ? "Darmowy" : ad.price + "zł"}}</p>
         <p class="seller"><strong>Wystawiający:</strong> <a @click="redirectToSeller(ad.user.id)">{{ad.user.username}}</a></p>
         <p class="city"><strong>Lokalizacja:</strong> {{ad.city}}</p>
+        <p class="city"><strong>Mail ogłoszeniodawcy:</strong> {{ad.advertiser_email}}</p>
         <p>
           <v-btn @click="observeAd">Obserwuj</v-btn>
+        </p>
+        <p>
+          <v-btn v-if="this.$store.getters.user.id === ad.user.id" @click="editAd(ad.id)">Edytuj ogłoszenie</v-btn>
         </p>
       </v-col>
     </v-row>
@@ -61,7 +65,8 @@
           "create_date": "2020-05-21",
           "user": "",
           "promotion_id": 0,
-          "advert_status_id": 0
+          "advert_status_id": 0,
+          "advertiser_email": ""
         }
       }
     },
@@ -70,6 +75,7 @@
         try {
           const resp = await this.$http.get(`/api/adverts/${this.$route.params.id}/`);
           this.ad = resp.data;
+          this.loadAdvertiserMail()
         } catch {
           this.$router.replace('/ad-not-found')
         }
@@ -77,8 +83,10 @@
       redirectToSeller: function(id) {
           this.$router.push(`/user/${id}/ads`)
       },
+      editAd: function(id) {
+        this.$router.push(`/ad/${id}/edit/`)
+      },
       observeAd: async function() {
-        console.log(`/api/adverts/${this.$route.params.id}/observed/`)
         this.$http({
                 method: 'POST',
                 url: `/api/adverts/${this.$route.params.id}/observed/`,
@@ -91,6 +99,18 @@
         }).catch(() => {
           this.snackBar.text = 'Wystąpił błąd!'
           this.snackBar.show = true
+        })
+      },
+      loadAdvertiserMail: async function() {
+        this.$http({
+          method: 'GET',
+          url: `/api/users/${this.ad.user.id}`,
+          credentials: 'include',
+          headers: {'Authorization': 'Bearer ' + this.$store.getters.token}
+        }).then((response) => {
+          this.ad.advertiser_email = response.data.email
+        }).catch(() => {
+          this.ad.advertiser_email = "Nie znaleziono poczty"
         })
       }
     },

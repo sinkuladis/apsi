@@ -11,7 +11,6 @@
                     </v-col>
                     <span class="price">{{item.price}}zł</span>
                 </a>
-                <v-btn @click="editAd(item.id)">Edytuj ogłoszenie</v-btn>
             </md-card>
             <md-button v-if="!column" class="md-raised" @click="onClick">Zobacz więcej</md-button>
         </div>
@@ -25,9 +24,6 @@
         methods: {
             redirectTo: function(id) {
                 this.$router.push(`/ad/${id}`)
-            },
-            editAd: function(id) {
-                this.$router.push(`/ad/${id}/edit/`)
             }
         },
         computed: {
