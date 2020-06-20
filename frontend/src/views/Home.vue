@@ -71,6 +71,9 @@
             },
             showMoreLastAdded: function() {
                 this.$router.push(`/latest`)
+            },
+            showRules: function() {
+                this.$router.push(`/Rules`)
             }
         }
     }
