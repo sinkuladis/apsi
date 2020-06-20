@@ -4,13 +4,14 @@
         <div class="inner-container">
             <md-card v-for="item in items" :key="item.message">
                 <a v-on:click="redirectTo(item.id)">
-                    <img v-bind:src="item.image"/> 
+                    <img v-bind:src="item.image"/>
                     <v-col class="inner">
                         <span class="title">{{item.title}}</span>
                         <span>{{item.advert_category}}</span>
                     </v-col>
                     <span class="price">{{item.price}}zł</span>
                 </a>
+                <v-btn @click="editAd(item.id)">Edytuj ogłoszenie</v-btn>
             </md-card>
             <md-button v-if="!column" class="md-raised" @click="onClick">Zobacz więcej</md-button>
         </div>
@@ -24,6 +25,9 @@
         methods: {
             redirectTo: function(id) {
                 this.$router.push(`/ad/${id}`)
+            },
+            editAd: function(id) {
+                this.$router.push(`/ad/${id}/edit/`)
             }
         },
         computed: {
