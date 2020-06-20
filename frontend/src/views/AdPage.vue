@@ -6,25 +6,42 @@
     </div>
     <v-row>
       <v-col cols="6">
-        <img v-bind:src="ad.image"/> 
-      </v-col> 
+        <img v-bind:src="ad.image"/>
+      </v-col>
       <v-col cols="6" class="details">
         <h1 class="ad-title">{{ad.title}}</h1>
         <p class="price">{{ad.for_free ? "Darmowy" : ad.price + "zł"}}</p>
         <p class="seller"><strong>Wystawiający:</strong> <a @click="redirectToSeller(ad.user.id)">{{ad.user.username}}</a></p>
         <p class="city"><strong>Lokalizacja:</strong> {{ad.city}}</p>
-      </v-col> 
-    </v-row>      
+        <p>
+          <v-btn @click="observeAd">Obserwuj</v-btn>
+        </p>
+      </v-col>
+    </v-row>
     <p class="description">{{ad.description}}</p>
+    <v-snackbar v-model="snackBar.show" :timeout="2000">
+      {{ snackBar.text }}
+      <v-btn
+              color="blue"
+              text
+              @click="snackbar = false"
+      >
+        Close
+      </v-btn>
+    </v-snackbar>
   </div>
 </template>
 
 <script>
-  
+// import axios from 'axios'
 
   export default {
     data() {
       return {
+        snackBar: {
+          show: false,
+          text: 'Wystąpił błąd!'
+        },
         ad: {
           "title": "Rower",
           "image": "",
@@ -59,6 +76,22 @@
       },
       redirectToSeller: function(id) {
           this.$router.push(`/user/${id}/ads`)
+      },
+      observeAd: async function() {
+        console.log(`/api/adverts/${this.$route.params.id}/observed/`)
+        this.$http({
+                method: 'POST',
+                url: `/api/adverts/${this.$route.params.id}/observed/`,
+                data: {id: this.$route.params.id},
+                credentials: 'include',
+                headers: {'Authorization': 'Bearer ' + this.$store.getters.token}
+        }).then(() => {
+          this.snackBar.text = 'Dodano do obserwowanych'
+          this.snackBar.show = true
+        }).catch(() => {
+          this.snackBar.text = 'Wystąpił błąd!'
+          this.snackBar.show = true
+        })
       }
     },
     created() {
