@@ -12,14 +12,14 @@ from ..permissions import IsSelf, IsOwner, IsMessageOwner, IsMessageReceiver
 class UserView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     fields = ['id', 'email', 'username', 'last_name', 'first_name']
 
     def get_permissions(self):
         if self.action in ['update','partial_update','destroy']:
-            self.permission_classes = [IsSelf, permissions.IsAdminUser]
+            self.permission_classes = (IsSelf | permissions.IsAdminUser, )
         else:
-            self.permission_classes = [permissions.AllowAny,]
+            self.permission_classes = (permissions.AllowAny,)
         return super(self.__class__, self).get_permissions()
 
     @action(detail=True, permission_classes=[IsAuthenticated],
@@ -50,7 +50,7 @@ class UserView(viewsets.ModelViewSet):
 
 class AdvertView(viewsets.ModelViewSet):
     queryset = Advert.objects.all()
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     filterset_fields = ('title', 'user', 'advert_category', 'city', 'promotion', 'advert_status', 'subscribing_users')
 
 
@@ -70,11 +70,11 @@ class AdvertView(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action in ['update','partial_update','destroy']:
-            self.permission_classes = [IsOwner, permissions.IsAdminUser]
+            self.permission_classes = (IsOwner | permissions.IsAdminUser,)
         elif self.action in ['create']:
-            self.permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
+            self.permission_classes = (permissions.IsAuthenticated,)
         else:
-            self.permission_classes = [permissions.IsAuthenticatedOrReadOnly,]
+            self.permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
         return super(self.__class__, self).get_permissions()
 
     @action(detail=True, permission_classes=[IsAuthenticated],
@@ -97,24 +97,24 @@ class AdvertMessageView(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action in ['update','partial_update','destroy']:
-            self.permission_classes = [IsMessageOwner]
+            self.permission_classes = (IsMessageOwner,)
         elif self.action in ['create']:
-            self.permission_classes = [permissions.IsAuthenticated]
+            self.permission_classes = (permissions.IsAuthenticated,)
         else:
-            self.permission_classes = [IsMessageOwner, IsMessageReceiver]
+            self.permission_classes = (IsMessageOwner| IsMessageReceiver,)
         return super(self.__class__, self).get_permissions()
 
 
 class AdvertCategoryView(viewsets.ReadOnlyModelViewSet):
     queryset = AdvertCategory.objects.all()
     serializer_class = AdvertCategorySerializer
-    permission_classes = [permissions.AllowAny]
+    permission_classes = (permissions.AllowAny,)
 
 
 class AdvertLatest(viewsets.ModelViewSet):
     queryset = Advert.objects.all().order_by('-create_date')[:10]
     serializer_class = AdvertSerializer
-    permission_classes = [permissions.AllowAny]
+    permission_classes = (permissions.AllowAny,)
     filterset_fields = ('user', 'advert_category', 'city', 'promotion', 'advert_status')
 
     def get_serializer_class(self):
