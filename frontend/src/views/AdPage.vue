@@ -13,7 +13,7 @@
         <p class="price">{{ad.for_free ? "Darmowy" : ad.price + "zł"}}</p>
         <p class="seller"><strong>Wystawiający:</strong> <a @click="redirectToSeller(ad.user.id)">{{ad.user.username}}</a></p>
         <p class="city"><strong>Lokalizacja:</strong> {{ad.city}}</p>
-        <p class="city"><strong>Mail ogłoszeniodawcy: </strong>{{ad.advertiser_email}}</p>
+        <p class="email"><strong>Mail ogłoszeniodawcy: </strong>{{ad.advertiser_email}}</p>
         <p>
           <v-btn @click="observeAd">Obserwuj</v-btn>
         </p>
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 
   export default {
     data() {
@@ -102,13 +102,12 @@
         })
       },
       loadAdvertiserMail: async function() {
-        this.$http({
+        await axios({
           method: 'GET',
           url: `/api/users/${this.ad.user.id}`,
           credentials: 'include',
           headers: {'Authorization': 'Bearer ' + this.$store.getters.token}
         }).then((response) => {
-          console.log(response.data)
           this.ad.advertiser_email = response.data.email
         }).catch(() => {
           this.ad.advertiser_email = "Nie znaleziono poczty"
@@ -160,6 +159,13 @@
   }
 
   .city {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+    text-align: center;
+  }
+
+  .email {
     font-size: 1rem;
     color: #666;
     margin: 0;

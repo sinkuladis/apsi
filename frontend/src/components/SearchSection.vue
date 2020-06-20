@@ -21,7 +21,7 @@
                 </v-col>
                 <v-col cols="3">
                     <v-autocomplete
-                            v-model="data.city"
+                            v-model="data.city__name"
                             :items="cities"
                             solo
                             flat
@@ -57,8 +57,8 @@
         data() {
             return {
                 data: {
-                    title: '',
-                    city: ''
+                    "title": '',
+                    "city__name": ''
                 },
                 cities: [
                     'Warszawa', 'Wrocław', 'Toruń', 'Lublin',
@@ -76,12 +76,14 @@
         methods: {
             search: async function() {
                 await this.$store.dispatch('searchAdverts', this.data)
-                    .then(() => {
+                    .then((response) => {
+                        if(response.data.length === 0){
+                            this.$router.push('/ad-not-found')
+                        }
                         this.$router.push('/search')
                     }).catch(() => {
                         this.$router.push('/ad-not-found')
                     })
-
             }
         }
     }

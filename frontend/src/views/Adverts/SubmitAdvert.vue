@@ -48,7 +48,7 @@
                         </v-btn-toggle>
                     </v-col>
                 </v-row>
-                <v-row v-if="isFree" class="justify-center">
+                <v-row v-if="!isFree" class="justify-center">
                     <v-col cols="4" class="ms-6">
                         <v-text-field
                                 :rules="rules.required"
@@ -92,7 +92,9 @@
                 <v-row class="justify-center">
                     <v-col cols="5" class="ms-6">
                         <v-file-input
+                                v-model="control.imageFile"
                                 outlined
+                                show-size
                                 accept="image/png, image/jpeg, image/bmp"
                                 placeholder="Dodaj zdjęcie główne"
                                 prepend-inner-icon="mdi-camera"
@@ -162,11 +164,11 @@
                     editAdvert: false,
                     isFormValid: false,
                     showSnackbar: false,
+                    imageFile: null
                 },
 
                 text: {
-                    snackbar: 'Wystąpił błąd!',
-                    defaultImage: ''
+                    snackbar: 'Wystąpił błąd!'
                 },
 
                 selectors: {
@@ -194,9 +196,8 @@
                     title: '',
                     description: '',
                     price: 0.01,
-                    for_free: this.isFree,
+                    for_free: false,
                     create_date: '',
-                    image: null,
                 },
 
                 rules: {
@@ -212,10 +213,7 @@
         },
         computed: {
             isFree: function () {
-                return this.control.showPrice === 'value'
-            },
-            price: function () {
-                return this.isFree ? 0 : this.data.price
+                return this.control.showPrice === 'free'
             }
         },
         methods: {
@@ -227,41 +225,20 @@
                     return
                 }
                 this.data.for_free = this.isFree
-                this.data.image = this.text.defaultImage
-                // PUT if we edit the advert
-                // POST in other case
-                if (this.control.editAdvert){
-                    console.log(this.data)
-                    await axios({
-                            method: 'PATCH',
-                            url: `/api/adverts/${this.$route.params.id}/`,
-                            data: this.data,
-                            credentials: 'include',
-                            headers: {'Authorization': 'Bearer ' + this.$store.getters.token}
+                if (this.control.imageFile) {
+                    await this.convertToBase64(this.control.imageFile)
+                        .then((response) => {
+                            this.data.image = response
+                        }).catch(() => {
+                            this.data.image = null
                         })
-                        .then(() => {
-                            this.$router.push(`/ad/${this.$route.params.id}`)
-                        })
-                        .catch(() => {
-                            this.control.showSnackbar = true;
-                        })
+                }
+                if (this.control.editAdvert) {
+                    await this.axiosPatchAdvert()
                 } else {
                     this.data.user = this.$store.getters.user.id
                     this.data.create_date = this.currentDate()
-
-                    await axios({
-                            method: 'POST',
-                            url:'/api/adverts/',
-                            data: this.data,
-                            credentials: 'include',
-                            headers: {'Authorization': 'Bearer ' + this.$store.getters.token}
-                        })
-                        .then(() => {
-                            this.$router.push(`/user/${this.$store.getters.user.id}/ads`)
-                        })
-                        .catch(() => {
-                            this.control.showSnackbar = true;
-                        })
+                    await this.axiosPostAdvert()
                 }
             },
             currentDate: function () {
@@ -269,34 +246,68 @@
                     return (n < 10 ? '0' : '') + n;
                 }
 
-                var now = new Date();
+                const now = new Date();
                 return '' + now.getFullYear() + '-'
                     + twoDigit(now.getMonth() + 1) + '-'
                     + twoDigit(now.getDate());
+            },
+            convertToBase64: (imageFile) => new Promise((resolve, reject) => {
+                const reader = new FileReader()
+                reader.onload = () => resolve(reader.result)
+                reader.onerror = error => reject(error)
+                reader.readAsDataURL(imageFile)
+            }),
+            axiosPatchAdvert: function() {
+                axios({
+                    method: 'PATCH',
+                    url: `/api/adverts/${this.$route.params.id}/`,
+                    data: this.data,
+                    credentials: 'include',
+                    headers: {'Authorization': 'Bearer ' + this.$store.getters.token}
+                })
+                    .then(() => {
+                        this.$router.push(`/ad/${this.$route.params.id}`)
+                    })
+                    .catch(() => {
+                        this.control.showSnackbar = true;
+                    })
+            },
+            axiosPostAdvert: function() {
+                axios({
+                    method: 'POST',
+                    url: '/api/adverts/',
+                    data: this.data,
+                    credentials: 'include',
+                    headers: {'Authorization': 'Bearer ' + this.$store.getters.token}
+                })
+                    .then(() => {
+                        this.$router.push(`/user/${this.$store.getters.user.id}/ads`)
+                    })
+                    .catch(() => {
+                        this.control.showSnackbar = true;
+                    })
             }
         },
         created: async function () {
             if (this.$route.name === "Edytowanie ogłoszenia") {
                 this.control.editAdvert = true
                 await axios({
-                        method: 'GET',
-                        url: `/api/adverts/${this.$route.params.id}/`,
-                        credentials: 'include',
-                        headers: {'Authorization': 'Bearer ' + this.$store.getters.token}
-                    })
+                    method: 'GET',
+                    url: `/api/adverts/${this.$route.params.id}/`,
+                    credentials: 'include',
+                    headers: {'Authorization': 'Bearer ' + this.$store.getters.token}
+                })
                     .then((response) => {
                         this.data = {
-                                advert_category: response.data.advert_category,
-                                city: response.data.city,
-                                promotion: response.data.promotion,
-                                advert_status: response.data.advert_status,
-                                title: response.data.title,
-                                description: response.data.description,
-                                price: response.data.price,
-                                for_free: response.data.for_free,
-                                create_date: response.data.create_date,
-                                // Undefined in image GET
-                                image: response.data.create_date
+                            advert_category: response.data.advert_category,
+                            city: response.data.city,
+                            promotion: response.data.promotion,
+                            advert_status: response.data.advert_status,
+                            title: response.data.title,
+                            description: response.data.description,
+                            price: response.data.price,
+                            for_free: response.data.for_free,
+                            create_date: response.data.create_date,
                         }
                     })
                     .catch(() => {

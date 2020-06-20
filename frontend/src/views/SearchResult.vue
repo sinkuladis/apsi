@@ -6,8 +6,12 @@
                 @click:row="viewAdvert"
                 class="elevation-1"
         >
-            <template v-slot:item.image>
-                <v-img src="https://picsum.photos/100" height="100" widht="100"></v-img>
+            <template v-slot:item.image="{ item }">
+                <v-img :src="item.image" height="100" widht="100"></v-img>
+            </template>
+
+            <template v-slot:item.price="{ item }">
+                <span>{{item.for_free ? "Darmowy" : item.price}}</span>
             </template>
         </v-data-table>
     </v-card>
