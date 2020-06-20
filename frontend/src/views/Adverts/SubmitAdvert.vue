@@ -191,7 +191,6 @@
                     city: '',
                     promotion: 'Zwykły',
                     advert_status: 'Aktywne',
-                    user: '',
                     title: '',
                     description: '',
                     price: 0.01,
@@ -232,15 +231,16 @@
                 // PUT if we edit the advert
                 // POST in other case
                 if (this.control.editAdvert){
+                    console.log(this.data)
                     await axios({
-                            method: 'PUT',
+                            method: 'PATCH',
                             url: `/api/adverts/${this.$route.params.id}/`,
                             data: this.data,
                             credentials: 'include',
                             headers: {'Authorization': 'Bearer ' + this.$store.getters.token}
                         })
                         .then(() => {
-                            this.$router.push(`/user/${this.$store.getters.user.id}/ads`)
+                            this.$router.push(`/ad/${this.$route.params.id}`)
                         })
                         .catch(() => {
                             this.control.showSnackbar = true;
@@ -290,7 +290,6 @@
                                 city: response.data.city,
                                 promotion: response.data.promotion,
                                 advert_status: response.data.advert_status,
-                                user: response.data.user,
                                 title: response.data.title,
                                 description: response.data.description,
                                 price: response.data.price,
