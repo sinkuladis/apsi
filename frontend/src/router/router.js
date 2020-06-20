@@ -11,6 +11,7 @@ import ObservedAds from '@/views/ObservedAds'
 import store from '../store/store'
 import UserAds from '@/views/UserAds'
 import LastAddedAds from '@/views/LastAddedAds'
+import SearchResult from "../views/SearchResult";
 
 const routes = [
     {
@@ -66,6 +67,11 @@ const routes = [
         path: '/latest',
         name: 'Ostatnio dodane',
         component: LastAddedAds,
+    },
+    {
+        path: '/search',
+        name: 'Wyszukiwanie ogłoszeń',
+        component: SearchResult
     },
     {
         path: '/not-found',
