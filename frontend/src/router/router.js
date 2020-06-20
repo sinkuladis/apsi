@@ -11,6 +11,13 @@ import ObservedAds from '@/views/ObservedAds'
 import store from '../store/store'
 import UserAds from '@/views/UserAds'
 import LastAddedAds from '@/views/LastAddedAds'
+import Career from '@/views/Career'
+import About from '@/views/About'
+import Rules from '@/views/Rules'
+import Commercial from '@/views/Commercial'
+import Help from '@/views/Help'
+import PrivatePolicy from '@/views/PrivatePolicy'
+
 
 const routes = [
     {
@@ -71,6 +78,36 @@ const routes = [
         path: '/not-found',
         name: 'Strona nie istnieje',
         component: NotFound,
+    },
+        {
+        path: '/career',
+        name: 'Kariera w FakeOlx',
+        component: Career,
+    },
+    {
+        path: '/about',
+        name: 'Jak działamy',
+        component: About,
+    },
+    {
+        path: '/rules',
+        name: 'Regulamin',
+        component: Rules,
+    },
+    {
+        path: '/commercial',
+        name: 'Reklama',
+        component: Commercial,
+    },
+    {
+        path: '/help',
+        name: 'Pomoc',
+        component: Help,
+    },
+    {
+        path: '/privatePolicy',
+        name: 'Polityka prywatności',
+        component: PrivatePolicy,
     },
     {
         path: '*',
