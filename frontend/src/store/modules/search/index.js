@@ -23,10 +23,11 @@ const mutations = {
 const actions = {
     searchAdverts({commit}, data) {
         return new Promise((resolve, reject) => {
+            console.log(data)
             axios({
                 method: 'GET',
                 url: '/api/adverts/',
-                data: data
+                params: data
             }).then((response) => {
                 commit('searchSuccess')
                 commit('storeSearch', response.data)
