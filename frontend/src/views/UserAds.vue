@@ -42,7 +42,7 @@
     methods: {
       loadAdInfo: async function() {
         try {
-          const resp = await this.$http.get(`/api/adverts/`, {params: {user: this.$route.params.id}});
+          const resp = await this.$http.get(`/api/adverts/`, {params: {creator: this.$route.params.id}});
           this.ads = resp.data;
           this.shownAds = this.ads.filter(ad => ad.advert_status === this.selectedType)
           this.error = false

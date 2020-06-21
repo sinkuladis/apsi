@@ -3,10 +3,10 @@ from rest_framework.decorators import  action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from ..models import Advert, AdvertMessage, User, AdvertCategory
-from .serializers import UserSerializer, AdvertSerializer, AdvertMessageSerializer, UserResetPasswordSerializer, \
+from ..models import Advert, User, AdvertCategory
+from .serializers import UserSerializer, AdvertSerializer, UserResetPasswordSerializer, \
     AdvertCategorySerializer, AdvertSerializerBrief
-from ..permissions import IsSelf, IsOwner, IsMessageOwner, IsMessageReceiver
+from ..permissions import IsSelf, IsOwner
 
 
 class UserView(viewsets.ModelViewSet):
@@ -47,19 +47,18 @@ class UserView(viewsets.ModelViewSet):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
 
+    @action(detail=True, permission_classes=[IsAuthenticated], url_path='observed_adds')
+    def get_observed_adverts(self, request, pk=None):
+        observed = User.objects.get(pk=pk).observed_adverts
+        serializer = AdvertSerializerBrief(observed, many=True)
+        return Response(serializer.data)
+
 
 class AdvertView(viewsets.ModelViewSet):
     queryset = Advert.objects.all()
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     filterset_fields = ('title', 'user', 'advert_category__name', 'city__name', 'promotion__name', 'advert_status__name', 'subscribing_users')
 
-
-    def partial_update(self, request, *args, **kwargs):
-        instance = self.get_object()
-        serializer = self.get_serializer_class()(instance, data=request.data, partial=True)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
 
     def get_serializer_class(self):
         if self.action == 'list':
@@ -89,20 +88,6 @@ class AdvertView(viewsets.ModelViewSet):
             instance.subscribing_users.remove(request.user)
             instance.save()
             return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class AdvertMessageView(viewsets.ModelViewSet):
-    queryset = AdvertMessage.objects.all()
-    serializer_class = AdvertMessageSerializer
-
-    def get_permissions(self):
-        if self.action in ['update','partial_update','destroy']:
-            self.permission_classes = (IsMessageOwner,)
-        elif self.action in ['create']:
-            self.permission_classes = (permissions.IsAuthenticated,)
-        else:
-            self.permission_classes = (IsMessageOwner| IsMessageReceiver,)
-        return super(self.__class__, self).get_permissions()
 
 
 class AdvertCategoryView(viewsets.ReadOnlyModelViewSet):

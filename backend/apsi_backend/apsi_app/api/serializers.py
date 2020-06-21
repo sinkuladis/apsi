@@ -4,7 +4,7 @@ from drf_extra_fields.fields import Base64ImageField
 from drf_extra_fields.relations import PresentablePrimaryKeyRelatedField
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from ..models import Advert, AdvertMessage, AdvertCategory, User, AdvertPromotion, \
+from ..models import Advert, AdvertCategory, User, AdvertPromotion, \
     AdvertStatus, City
 from PIL import Image
 
@@ -91,8 +91,11 @@ class AdvertSerializer(serializers.ModelSerializer):
     user = PresentablePrimaryKeyRelatedField(
         queryset=User.objects.all(),
         presentation_serializer=UserSerializerBrief,
+        source='creator',
     )
     subscribing_users = UserSerializer(many=True, read_only=True)
+
+
 
     class Meta:
         model = Advert
@@ -106,21 +109,13 @@ class AdvertSerializerBrief(serializers.ModelSerializer):
     user = PresentablePrimaryKeyRelatedField(
         queryset=User.objects.all(),
         presentation_serializer=UserSerializerBrief,
+        source='creator'
     )
     image = ThumbnailImageField(represent_in_base64=True)
 
     class Meta:
         model = Advert
         fields = ('id', 'advert_category', 'city', 'advert_status', 'user', 'title', 'price', 'image')
-
-
-class AdvertMessageSerializer(serializers.ModelSerializer):
-    advert = serializers.SlugRelatedField(slug_field='title', queryset=Advert.objects.all())
-    user = serializers.SlugRelatedField(slug_field='username', queryset=User.objects.all())
-
-    class Meta:
-        model = AdvertMessage
-        fields = '__all__'
 
 
 class AdvertCategorySerializer(serializers.ModelSerializer):

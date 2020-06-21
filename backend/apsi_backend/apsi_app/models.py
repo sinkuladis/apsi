@@ -37,11 +37,6 @@ class City(models.Model):
     class Meta:
         verbose_name_plural = "Cities"
 
-
-class User(AbstractUser):
-    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
-
-
 # Avert model
 class AdvertCategory(models.Model):
     name = models.CharField(max_length=100)
@@ -80,26 +75,21 @@ class Advert(models.Model):
                                         null=True, blank=True)
     city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='city_name', null=True, blank=True)
     create_date = models.DateField(default=datetime.date.today)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_name', null=True, blank=True)
+    creator = models.ForeignKey('User', on_delete=models.CASCADE, related_name='user_name', null=True, blank=True)
     promotion = models.ForeignKey(AdvertPromotion, on_delete=models.CASCADE, related_name='promotion_name', null=True,
                                   blank=True)
     advert_status = models.ForeignKey(AdvertStatus, on_delete=models.CASCADE, related_name='advert_status_name',
                                       null=True, blank=True)
-    subscribing_users = models.ManyToManyField('User', 'subscribing_users')
+    subscribing_users = models.ManyToManyField('User', blank=True)
     image = models.ImageField(blank=True)
 
 
     def __str__(self):
         return '%s' % (self.title)
 
-
-class AdvertMessage(models.Model):
-    sender = models.ForeignKey(User, on_delete=models.CASCADE)
-    advert = models.ForeignKey(Advert, on_delete=models.CASCADE)
-    content = models.CharField(max_length=3000)
-
-    def __str__(self):
-        return '%s' % (self.content[0:20])
+class User(AbstractUser):
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
+    observed_adverts = models.ManyToManyField('Advert', through=Advert.subscribing_users.through, blank=True)
 
 
 class AdvertItems(models.Model):

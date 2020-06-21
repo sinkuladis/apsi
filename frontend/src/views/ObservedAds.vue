@@ -29,7 +29,7 @@
     methods: {
       loadAdInfo: async function() {
         try {
-          const resp = await this.$http.get(`/api/adverts/${this.$route.params.id}/observed/`);
+          const resp = await this.$http.get(`/api/users/${this.$route.params.id}/observed_adds/`);
           this.ads = resp.data;
           this.error = false
         } catch {
