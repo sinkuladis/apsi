@@ -28,7 +28,7 @@ services:
       - SQL_USER=$SQL_USER
     volumes:
       - static:/static
-      - media:/media
+      - media:/usr/src/app/media
   db:
     image: postgres:12.0-alpine
     volumes:
