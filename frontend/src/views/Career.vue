@@ -5,9 +5,9 @@
             Obecnie rekrutujemy na stanowiska:
         </h2>
             <ul>
-              <li> <a href="/src/const/data_analyst.pdf">Data Analyst</a> </li>
-              <li> <a href="/src/const/data_engineer.pdf"> Data Engineer</a> </li>
-              <li> <a href="/src/const/software_engineer.pdf">Software Engineer</a> </li>
+              <li> <a href="/data_analyst.pdf">Data Analyst</a> </li>
+              <li> <a href="/data_engineer.pdf"> Data Engineer</a> </li>
+              <li> <a href="/software_engineer.pdf">Software Engineer</a> </li>
             </ul>
         <section>
         <h2 style="text-align:left">
