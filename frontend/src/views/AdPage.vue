@@ -13,7 +13,7 @@
         <p class="price">{{ad.for_free ? "Darmowy" : ad.price + "zł"}}</p>
         <p class="seller"><strong>Wystawiający:</strong> <a @click="redirectToSeller(ad.user.id)">{{ad.user.username}}</a></p>
         <p class="city"><strong>Lokalizacja:</strong> {{ad.city}}</p>
-        <p class="email"><strong>Mail ogłoszeniodawcy: </strong>{{ad.advertiser_email}}</p>
+        <p class="email"><strong>Mail ogłoszeniodawcy: </strong><a :href="'mailto:' + mail">{{mail}}</a></p>
         <p>
           <v-btn @click="observeAd">Obserwuj</v-btn>
         </p>
@@ -46,6 +46,7 @@ import axios from 'axios'
           show: false,
           text: 'Wystąpił błąd!'
         },
+        mail: '',
         ad: {
           "title": "Rower",
           "image": "",
@@ -102,16 +103,16 @@ import axios from 'axios'
         })
       },
       loadAdvertiserMail: async function() {
-        await axios({
-          method: 'GET',
-          url: `/api/users/${this.ad.user.id}`,
-          credentials: 'include',
-          headers: {'Authorization': 'Bearer ' + this.$store.getters.token}
-        }).then((response) => {
-          this.ad.advertiser_email = response.data.email
-        }).catch(() => {
-          this.ad.advertiser_email = "Nie znaleziono poczty"
-        })
+          await axios({
+            method: 'GET',
+            url: `/api/users/${this.ad.user.id}`,
+            credentials: 'include',
+            headers: {'Authorization': 'Bearer ' + this.$store.getters.token}
+          }).then((response) => {
+            this.mail = response.data.email
+          }).catch(() => {
+            this.mail = "Nie znaleziono"
+          })
       }
     },
     created() {
