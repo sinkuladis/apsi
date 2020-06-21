@@ -59,7 +59,6 @@ class AdvertView(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     filterset_fields = ('title', 'creator', 'advert_category__name', 'city__name', 'promotion__name', 'advert_status__name', 'subscribing_users')
 
-
     def get_serializer_class(self):
         if self.action == 'list':
             return AdvertSerializerBrief

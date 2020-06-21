@@ -69,7 +69,7 @@ class AdvertStatus(models.Model):
 class Advert(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=9000)
-    price = models.FloatField(validators=[MinValueValidator(0.01), MaxValueValidator(1000000)])
+    price = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(1000000)], blank=True)
     for_free = models.BooleanField(default=False)
     advert_category = models.ForeignKey(AdvertCategory, on_delete=models.CASCADE, related_name='category_name',
                                         null=True, blank=True)

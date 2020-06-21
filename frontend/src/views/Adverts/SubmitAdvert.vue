@@ -195,7 +195,7 @@
                     advert_status: 'Aktywne',
                     title: '',
                     description: '',
-                    price: 0.01,
+                    price: 0,
                     for_free: false,
                     create_date: '',
                 },
@@ -225,6 +225,9 @@
                     return
                 }
                 this.data.for_free = this.isFree
+                if (this.data.for_free) {
+                    this.data.price = 0
+                }
                 if (this.control.imageFile) {
                     await this.convertToBase64(this.control.imageFile)
                         .then((response) => {
