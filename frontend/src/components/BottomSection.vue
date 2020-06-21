@@ -12,7 +12,7 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt magni quis natus molestias ducimus ex deleniti laboriosam, quaerat dolorum maiores pariatur error voluptatem esse molestiae repellat dolore exercitationem? Velit, molestiae.</p>
                 <v-divider></v-divider>
                 <v-container>
-                    <v-btn x-small text class="font-weight-light"><b-link href="/Help">pomoc</b-link></v-btn>
+                    <v-btn @click="showHelp()" x-small text class="font-weight-light">pomoc</v-btn>
                     <v-btn @click="showPrivatePolicy()" x-small text class="font-weight-light">polityka prywatności</v-btn>
                     <v-btn :to="'/Rules'" x-small text class="font-weight-light">Regulamin</v-btn>
                     <v-btn @click="showCommercial()" x-small text class="font-weight-light">reklama</v-btn>
@@ -38,7 +38,7 @@
                 this.$router.push('/Rules')
             },
             showAbout: function() {
-                this.$router.go('/About')
+                this.$router.push('/About')
             },
             showCareer: function() {
                 this.$router.push('/Career')
@@ -50,8 +50,7 @@
                 this.$router.push('/Help')
             },
             showPrivatePolicy: function() {
-                this.$router.push({ path: '/' })
-                this.$router.push({ name: 'PrivatePolicy'})
+                this.$router.push('/PrivatePolicy')
             }
         }
     }

@@ -16,7 +16,7 @@ class Country(models.Model):
         return '%s' % (self.name)
 
     class Meta:
-        verbose_name_plural = "Counties"
+        verbose_name_plural = "Countries"
 
 
 class Province(models.Model):
