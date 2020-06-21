@@ -53,7 +53,7 @@
         methods: {
             loadAdsByCategory: async function(categoryName) {
                     try {
-                        const resp = await this.$http.get(`/api/adverts/`, { params: { advert_category: categoryName } });
+                        const resp = await this.$http.get(`/api/adverts/`, { params: { advert_category__name: categoryName } });
                         this.searchedAds = resp.data;
                         this.isSearched = true
                     } catch {

@@ -1,6 +1,6 @@
 <template>
   <div class="main-body">
-    <p 
+    <p
       v-if="ads.length === 0"
       class="observed-info"
     >
@@ -8,7 +8,7 @@
         Jeszcze nie umieściłeś ogłoszenia.
       </span>
       <span v-else>
-        Sprzedawca jeszcze nie umieścił ogłoszeń. 
+        Sprzedawca jeszcze nie umieścił ogłoszeń.
       </span>
     </p>
     <v-container v-else style="width: 100%">
@@ -74,7 +74,7 @@
       margin: 40px;
       font-size: 1.5rem;
     }
-    
+
     .options {
       display: flex;
       justify-content: center;
