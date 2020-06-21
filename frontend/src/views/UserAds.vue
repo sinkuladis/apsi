@@ -12,6 +12,7 @@
       </span>
     </p>
     <v-container v-else style="width: 100%">
+      <h1 v-if="currentUser" class="heading">Ogłoszenia użytkownika {{currentUser}}</h1>
       <div class="options" v-if="this.$route.params.id === this.$store.getters.user.id">
         <v-btn @click="changeSelection('Aktywne')">Aktywne</v-btn>
         <v-btn @click="changeSelection('Zakończone')">Zakończone</v-btn>
@@ -36,16 +37,18 @@
         ads: [],
         shownAds: [],
         error: false,
-        selectedType: "Aktywne"
+        selectedType: "Aktywne",
+        currentUser: null,
       }
     },
     methods: {
       loadAdInfo: async function() {
         try {
           const resp = await this.$http.get(`/api/adverts/`, {params: {creator: this.$route.params.id}});
-          this.ads = resp.data;
+          this.ads = resp.data || [];
           this.shownAds = this.ads.filter(ad => ad.advert_status === this.selectedType)
           this.error = false
+          this.currentUser = this.ads.length ? this.ads[0].user.username : null;
         } catch {
           this.error = true
         }
