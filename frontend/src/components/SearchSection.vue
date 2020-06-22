@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-row align-content="center" justify="center">
-            <v-col>
+            <v-col cols="12" xs="12">
                 <div class="display-3 blue-grey--text text--darken-3 text-center">
                     <span class="font-weight-light">Olx</span>
                     <span class="font-weight-medium">ample</span>
@@ -9,8 +9,8 @@
             </v-col>
         </v-row>
         <v-card color="blue" class="px-3">
-            <v-row justify="space-between">
-                <v-col cols="7">
+            <v-row justify="center">
+                <v-col md="7" sm="12">
                     <v-text-field
                             v-model="data.title"
                             solo
@@ -19,7 +19,7 @@
                             placeholder="Znajdź ogłoszenie...">
                     </v-text-field>
                 </v-col>
-                <v-col cols="3">
+                <v-col md="3" sm="12">
                     <v-autocomplete
                             v-model="data.city__name"
                             :items="cities"
@@ -29,8 +29,9 @@
                             placeholder="Gdzie szukasz?">
                     </v-autocomplete>
                 </v-col>
-                <v-col cols="2">
+                <v-col md="2" sm="4">
                     <v-btn @click="search"
+                           :loading="loading"
                             block large depressed color="blue lighten-2 white--text ">
                         <v-icon left>mdi-magnify</v-icon>
                         <span>Szukaj</span>
@@ -56,6 +57,7 @@
         name: 'SearchSection',
         data() {
             return {
+                loading: false,
                 data: {
                     "title": '',
                     "city__name": ''
@@ -75,6 +77,7 @@
         },
         methods: {
             search: async function() {
+                this.loading=true
                 await this.$store.dispatch('searchAdverts', this.data)
                     .then((response) => {
                         if(response.data.length === 0){

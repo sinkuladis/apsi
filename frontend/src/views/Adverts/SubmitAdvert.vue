@@ -130,6 +130,7 @@
                     <v-col offset="9">
                         <v-btn
                                 @click="submitAdvert"
+                                :loading="loading"
                                 depressed
                                 dark
                                 color="orange">
@@ -149,6 +150,9 @@
                 Close
             </v-btn>
         </v-snackbar>
+        <v-overlay :value="overlay">
+            <v-progress-circular indeterminate size="64"></v-progress-circular>
+        </v-overlay>
     </v-form>
 </template>
 
@@ -159,6 +163,8 @@
         name: "SubmitAdvert",
         data() {
             return {
+                loading: false,
+                overlay: false,
                 control: {
                     showPrice: '',
                     editAdvert: false,
@@ -224,6 +230,7 @@
                 if (!this.$refs.form.validate()) {
                     return
                 }
+                this.loading = true
                 this.data.for_free = this.isFree
                 if (this.data.for_free) {
                     this.data.price = 0
@@ -293,6 +300,7 @@
         },
         created: async function () {
             if (this.$route.name === "Edytowanie ogłoszenia") {
+                this.overlay = true,
                 this.control.editAdvert = true
                 await axios({
                     method: 'GET',
@@ -316,6 +324,7 @@
                     .catch(() => {
                         this.$router.push('/ad-not-found')
                     })
+                this.overlay = false
             }
         }
     }
