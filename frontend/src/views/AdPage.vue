@@ -119,6 +119,13 @@
                         this.snackBar.text = 'Przestano do obserwować'
                         this.snackBar.show = true
                         this.observed_label = 'obserwuj'
+                        this.$http({
+                            method: 'DELETE',
+                            url: `/api/adverts/${this.$route.params.id}/observed/`,
+                            data: {id: this.$route.params.id},
+                            credentials: 'include',
+                            headers: {'Authorization': 'Bearer ' + this.$store.getters.token}
+                })
                     }
 
                 }).catch(() => {
