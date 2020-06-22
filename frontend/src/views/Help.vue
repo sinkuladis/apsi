@@ -1,7 +1,7 @@
 <template>
     <div class="main-body">
         <h1> Kontakt </h1>
-        Jeśli masz jakieś pytania lub potrzebujesz pomocy napisz do nas: pomoc@fakeOlx.pl
+        Jeśli masz jakieś pytania lub potrzebujesz pomocy napisz do nas: pomoc@olxample.pl
     </div>
     
 </template>

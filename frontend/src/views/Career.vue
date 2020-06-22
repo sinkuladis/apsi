@@ -1,6 +1,6 @@
 <template>
     <div class="main-body">
-        <h1> Kariera w FakeOlx</h1>
+        <h1> Kariera w Olx<bold>ample</bold></h1>
         <h2 style="text-align:left">
             Obecnie rekrutujemy na stanowiska:
         </h2>
@@ -38,7 +38,7 @@
         <section>
         <h2 style="text-align: left"> Jeśli jesteś zainteresowany pracą u nas:</h2>
         <ol>
-          <li> Prześlij CV i list motywacyjny na adres: fakeOlx@fakeOlx.pl </li>
+          <li> Prześlij CV i list motywacyjny na adres: olxample@olxample.pl </li>
           <li> Rozwiąż zadanie</li>
           <li> Przyjdź na spotkanie</li>
           <li> Zacznij pracę</li>

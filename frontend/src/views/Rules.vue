@@ -55,7 +55,7 @@
                     <li> <bold> Rejestracja </bold> – proces utworzenia przez Użytkownika Konta, po podaniu danych Użytkownika,
                     akceptacji Regulaminu i aktywacji Konta.</li>
 
-                    <li> <bold> Serwis </bold> – prowadzona  internetowa platforma online dostępna w domienie FakeOlx.pl.</li>
+                    <li> <bold> Serwis </bold> – prowadzona  internetowa platforma online dostępna w domienie Olx<bold>ample</bold>.pl.</li>
 
                     <li> <bold> Sprzedający </bold> – Użytkownik publikujący Ogłoszenie w Serwisie i dokonujący z Kupującym Transakcji.</li>
 
@@ -79,14 +79,14 @@
                     </li>
                     <li> Treści publikowane w Serwisie, w tym w szczególności Ogłoszenia, niezależnie od ich formy,
                     tj. materiały tekstowe, graficzne oraz wideo, są przedmiotem ochrony praw własności intelektualnej,
-                    w tym prawa autorskiego oraz praw własności przemysłowej, Grupy FakeOLX, Sprzedawców lub osób trzecich.
+                    w tym prawa autorskiego oraz praw własności przemysłowej, Grupy Olx<bold>ample</bold>, Sprzedawców lub osób trzecich.
                     Zabrania się jakiegokolwiek wykorzystywania tych treści bez pisemnej zgody uprawnionych. Zabrania się
                     jakiegokolwiek agregowania i przetwarzania danych oraz innych informacji dostępnych w Serwisie w
                     celu ich dalszego udostępniania osobom trzecim w ramach innych serwisów internetowych jak i poza
-                    Internetem. Zabrania się również wykorzystywania oznaczeń Serwisu oraz Grupy FakeOLX, w tym
-                    charakterystycznych elementów grafiki bez zgody Grupy FakeOLX.
+                    Internetem. Zabrania się również wykorzystywania oznaczeń Serwisu oraz Grupy Olx<bold>ample</bold>, w tym
+                    charakterystycznych elementów grafiki bez zgody Grupy Olx<bold>ample</bold>.
                     </li>
-                    <li> Grupa FakeOLX nie jest stroną Transakcji.
+                    <li> Grupa Olx<bold>ample</bold> nie jest stroną Transakcji.
                     </li>
                     <li> W ramach Serwisu możliwe jest:
                         <ol type="a">
@@ -99,7 +99,7 @@
                         Limitów są świadczone bezpłatnie. Pozostałe usługi świadczone są odpłatnie.
                     </li>
                     <li> Usługi dostawy i płatności realizowane są przez zewnętrznych usługodawców na rzecz Użytkowników,
-                        na podstawie odrębnych stosunków prawnych, których Grupa FakeOLX nie jest stroną.
+                        na podstawie odrębnych stosunków prawnych, których Grupa Olx<bold>ample</bold> nie jest stroną.
                     </li>
                     <li> Do korzystania z Serwisu w pełnym zakresie wymagane jest posiadanie urządzenia połączonego z
                         siecią Internet, spełniającego poniższe wymogi:
@@ -121,12 +121,12 @@
                             </li>
                         </ol>
                     </li>
-                    <li> Grupa FakeOLX dołoży należytych starań, aby zapewnić nieprzerwane działanie Serwisu. Dążąc do
-                        zapewnienia wysokiej jakości usług oraz sprawności funkcjonowania Serwisu, Grupa FakeOLX zastrzega
+                    <li> Grupa Olx<bold>ample</bold> dołoży należytych starań, aby zapewnić nieprzerwane działanie Serwisu. Dążąc do
+                        zapewnienia wysokiej jakości usług oraz sprawności funkcjonowania Serwisu, Grupa Olx<bold>ample</bold> zastrzega
                         sobie prawo do dokonywania przerw w funkcjonowaniu Serwisu na zasadach opisanych poniżej:
                         <ol type="a">
                             <li> Przerwy techniczne mogą być dokonywane w godzinach nocnych (22-6), w czasie których
-                                określone funkcjonalności Serwisu i usługi świadczone przez Grupę FakeOLX mogą być
+                                określone funkcjonalności Serwisu i usługi świadczone przez Grupę Olx<bold>ample</bold> mogą być
                                 ograniczone lub niedostępne.
                             </li>
                             <li> Awarią techniczną jest sytuacja wystąpienia błędu technicznego z powodu okoliczności,
@@ -139,7 +139,7 @@
                                     odświeżania lub promowania Ogłoszeń.</li>
                                 </ul>
                             </li>
-                            <li> W sytuacji wystąpienia awarii technicznej Grupa FakeOLX przedłuży czas emisji Ogłoszeń
+                            <li> W sytuacji wystąpienia awarii technicznej Grupa Olx<bold>ample</bold> przedłuży czas emisji Ogłoszeń
                                 aktywnych w okresie wystąpienia awarii technicznej o:
                                 <ul>
                                     <li> 12h – w przypadku awarii technicznej trwającej do 3h;</li>
@@ -189,7 +189,7 @@
                             <li>akceptacji założenia konta postanowień.</li>
                         </ol>
                     </li>
-                    <li>  Grupa FakeOLX przetwarza dane osobowe Użytkowników, osób działających
+                    <li>  Grupa Olx<bold>ample</bold> przetwarza dane osobowe Użytkowników, osób działających
                     w imieniu Użytkowników oraz Gości zgodnie z postanowieniami Polityki Prywatności
                     oraz Polityką dotyczącą Cookies i Podobnych Technologii.
                     </li>
@@ -198,7 +198,7 @@
                     <li>Użytkownik zapewnia, że dane podawane w procesie Rejestracji oraz w toku
                     korzystania z Serwisu są prawdziwe, poprawne i aktualne oraz, że jest on
                     uprawniony do korzystania z tych danych. Użytkownik zobowiązuje się do
-                    aktualizacji danych w razie ich zmiany. Grupa FakeOLX zastrzega sobie prawo do
+                    aktualizacji danych w razie ich zmiany. Grupa Olx<bold>ample</bold> zastrzega sobie prawo do
                     blokady Konta w przypadku, gdy podane dane nie będą spełniały powyższych wymogów.
                     </li>
                     <li>Osoba działająca w ramach Serwisu w imieniu i na rzecz Użytkownika będącego
@@ -209,36 +209,36 @@
                     </li>
                     <li>Użytkownik zobowiązuje się do zachowania danych dostępu do Konta w tajemnicy
                     i do ich ochrony przed dostępem przez niepowołane osoby trzecie. Użytkownik
-                    niezwłocznie poinformuje Grupę FakeOLX w razie powzięcia wiadomości o pozyskaniu
+                    niezwłocznie poinformuje Grupę Olx<bold>ample</bold> w razie powzięcia wiadomości o pozyskaniu
                     danych dostępu do Konta przez niepowołane osoby trzecie i w miarę możliwości dokona
                     niezwłocznej ich zmiany.
                     </li>
                     <li>Umowa usługi Konta zostaje zawarta na czas nieokreślony z chwilą aktywacji Konta.
                     </li>
-                    <li> Grupa FakeOLX uprawniona jest do rozwiązania umowy z Użytkownikiem, jeśli Użytkownik:
+                    <li> Grupa Olx<bold>ample</bold> uprawniona jest do rozwiązania umowy z Użytkownikiem, jeśli Użytkownik:
                         <ol type="a">
                             <li> nie zalogował się na Koncie przez okres dłuższy niż 24 miesiące.
                                 W rezultacie Użytkownik nie będzie już uprawniony do korzystania z usuniętego Konta. Informacja o rozwiązaniu umowy zostanie wysłana Użytkownikowi z 30-dniowym wyprzedzeniem na adres e-mail podany podczas Rejestracji. Użytkownik będzie mógł wyrazić chęć dalszego korzystania z Konta korzystając z udostępnionej w tym celu funkcjonalności wymagającej zalogowania się Użytkownika do Konta. Prawo Grupy OLX do rozwiązania umowy zgodnie z niniejszym postanowieniem nie ogranicza prawa Użytkownika do ponownej rejestracji w Serwisie. Grupa OLX nie gwarantuje jednak, że dotychczasowa nazwa Użytkownika powiązana z Kontem będzie dostępna do użycia podczas nowej rejestracji;
                             </li>
-                            <li> pomimo uprzedniego wezwania go przez Grupę FakeOLX do zaprzestania
+                            <li> pomimo uprzedniego wezwania go przez Grupę Olx<bold>ample</bold> do zaprzestania
                                 określonych działań lub zaniechań naruszających postanowienia Regulaminu
                                 lub przepisy prawa powszechnie obowiązującego, kontynuuje wskazane w
                                 wezwaniu działania.</li>
                         </ol>
                     </li>
                     <li> W celu zapewnienia prawidłowego funkcjonowania Serwisu, ochrony i
-                    zapewnienia bezpieczeństwa korzystających z niego osób, Grupa FakeOLX
+                    zapewnienia bezpieczeństwa korzystających z niego osób, Grupa Olx<bold>ample</bold>
                     zastrzega sobie prawo do dokonania dodatkowej weryfikacji aktualności i
                     prawdziwości danych podanych przez Użytkownika oraz żądania potwierdzenia
                     przez Użytkownika jego tożsamości, informacji zawartych w Ogłoszeniu lub
-                    informacji związanych z dokonaną Transakcją w wybrany przez Grupę FakeOLX
+                    informacji związanych z dokonaną Transakcją w wybrany przez Grupę Olx<bold>ample</bold>
                     sposób. Jeśli weryfikacja danych lub tożsamości Użytkownika nie powiedzie się,
-                    Grupa FakeOLX może zawiesić lub zablokować działanie Konta.</li>
+                    Grupa Olx<bold>ample</bold> może zawiesić lub zablokować działanie Konta.</li>
                     <li> Odstąpienie konsumenckie. Konsument może w terminie 14 dni od dnia zawarcia
-                        umowy z Grupą FakeOLX odstąpić od takiej umowy bez podania przyczyny,
-                        składając oświadczenie w tym zakresie na adres email: pomoc@fakeolx.pl
-                        lub pisemnie na adres Grupy FakeOLX. Wraz z odstąpieniem od umowy usługi
-                        Konta wygasają pozostałe umowy łączące Grupę FakeOLX z Użytkownikiem. </li>
+                        umowy z Grupą Olx<bold>ample</bold> odstąpić od takiej umowy bez podania przyczyny,
+                        składając oświadczenie w tym zakresie na adres email: pomoc@olxample.pl
+                        lub pisemnie na adres Grupy Olx<bold>ample</bold>. Wraz z odstąpieniem od umowy usługi
+                        Konta wygasają pozostałe umowy łączące Grupę Olx<bold>ample</bold> z Użytkownikiem. </li>
 
                 </ol>
             </section>
@@ -246,7 +246,7 @@
                 <h1>  Zasady publikacji Ogłoszeń </h1>
 
                 <ol>
-                    <li> Grupa FakeOLX umożliwia Użytkownikowi publikację Ogłoszenia w Serwisie.
+                    <li> Grupa Olx<bold>ample</bold> umożliwia Użytkownikowi publikację Ogłoszenia w Serwisie.
                         Publikacja przez Użytkownika Ogłoszenia w Serwisie następuje po wypełnieniu
                         odpowiedniego formularza.
                     </li>
@@ -256,15 +256,15 @@
                         skontaktowanie się z Użytkownikiem publikującym Ogłoszenie i przesłanie mu
                         wiadomości.
                     </li>
-                    <li> Z momentem publikacji Ogłoszenia Użytkownik udziela Grupie FakeOLX niewyłączną,
+                    <li> Z momentem publikacji Ogłoszenia Użytkownik udziela Grupie Olx<bold>ample</bold> niewyłączną,
                         nieograniczoną terytorialnie i nieodpłatną licencję na utrwalanie,
                         zwielokrotnianie i rozpowszechnianie całości lub dowolnego fragmentu Ogłoszenia,
-                        w celu jego wyświetlania w Serwisie, a także u partnerów Grupy FakeOLX za
+                        w celu jego wyświetlania w Serwisie, a także u partnerów Grupy Olx<bold>ample</bold> za
                         pośrednictwem których prowadzona jest promocja Serwisu, a także w dowolnym
                         miejscu za pośrednictwem sieci Internet, w tym w wyszukiwarkach internetowych
                         (jak np. Google), portalach społecznościowych (np. Facebook).
                         Udzielenie licencji jest konieczne dla pełnego korzystania z Serwisu.
-                        Ze względu na specyfikę Internetu Grupa FakeOLX nie ma pełnej kontroli nad
+                        Ze względu na specyfikę Internetu Grupa Olx<bold>ample</bold> nie ma pełnej kontroli nad
                         rozpowszechnianiem treści publikowanych lub przesyłanych z wykorzystaniem
                         funkcjonalności Serwisu innym Użytkownikom i nie przyjmuje odpowiedzialności
                         w tym zakresie za osoby trzecie, w szczególności w przypadku kopiowania i
@@ -301,7 +301,7 @@
                             </ol>
                     </li>
                     <li> W przypadku gdy Użytkownik opublikuje Ogłoszenie w niewłaściwej Kategorii Grupa
-                        FakeOLX uprawniona jest do zmiany Kategorii, przy czym jeśli zmiana skutkowałaby
+                        Olx<bold>ample</bold> uprawniona jest do zmiany Kategorii, przy czym jeśli zmiana skutkowałaby
                         opublikowaniem Ogłoszenia poza Limitem Ogłoszenie jest usuwane.
                     </li>
                     <li> Przedmiotu Ogłoszenia nie może stanowić:
@@ -384,7 +384,7 @@
                                     sprzedaży przedmiotów zakazanych i dopuszczonych warunkowo
                                     lub prowadzenia ich sprzedaży bez spełnienia warunków wymaganych
                                 </li>
-                                <li>niewprowadzania osób korzystających z Serwisu oraz Grupy FakeOLX w
+                                <li>niewprowadzania osób korzystających z Serwisu oraz Grupy Olx<bold>ample</bold> w
                                     błąd, np. poprzez podawanie nieprawdziwych informacji dotyczących
                                     Przedmiotu albo zatajenie istotnych informacji;
                                 </li>
@@ -395,16 +395,16 @@
                     </li>
 
                     <li>W razie zmian w treści Ogłoszenia dokonanych przez Użytkownika po jego
-                        publikacji w Serwisie, Grupa FakeOLX uprawniona jest do edytowania treści
+                        publikacji w Serwisie, Grupa Olx<bold>ample</bold> uprawniona jest do edytowania treści
                         niezgodnych z Regulaminem lub usunięcia Ogłoszenia.
                     </li>
-                    <li>Każda osoba korzystająca z Serwisu ma możliwość zgłoszenia Grupie FakeOLX
+                    <li>Każda osoba korzystająca z Serwisu ma możliwość zgłoszenia Grupie Olx<bold>ample</bold>
                         treści bezprawnych lub sprzecznych z Regulaminem.
                     </li>
                     <li>W razie uzyskania wiarygodnej wiadomości (na podstawie Zgłoszenia nadużycia
                         lub w inny sposób) o tym, że treść przesyłana czy publikowana z
                         wykorzystaniem funkcjonalności Serwisu ma bezprawny charakter lub narusza
-                        postanowienia Regulaminu, Grupa FakeOLX może:
+                        postanowienia Regulaminu, Grupa Olx<bold>ample</bold> może:
                         <ul>
                             <li>niezwłocznie zablokować daną treść, w tym w szczególności Ogłoszenie.
                                 W przypadku blokady, treść nie będzie widoczna ani dostępna dla osób
@@ -425,17 +425,17 @@
                             </li>
                         </ul>
                     </li>
-                    <li>Grupa FakeOLX uprawniona jest do usunięcia Ogłoszenia lub zablokowania Konta
+                    <li>Grupa Olx<bold>ample</bold> uprawniona jest do usunięcia Ogłoszenia lub zablokowania Konta
                         jeśli zaistniało podejrzenie, że za pośrednictwem Ogłoszenia lub Konta mogło
                         lub może dojść do działań zagrażających bezpieczeństwu innych Użytkowników w
                         ramach Serwisu, jak również w przypadku, w którym Ogłoszenie negatywnie wpływa
-                        na dobre imię Grupy FakeOLX lub w inny sposób szkodzi Grupie FakeOLX.
+                        na dobre imię Grupy Olx<bold>ample</bold> lub w inny sposób szkodzi Grupie Olx<bold>ample</bold>.
                     </li>
                     <li>W razie poważnego naruszenia prawa z wykorzystaniem Serwisu, a także poważnego
                         lub powtarzającego się naruszenia postanowień Regulaminu, w szczególności
                         w razie powtarzających się prób publikowania lub rozpowszechniania nielegalnych
                         treści przez danego Użytkownika lub różnych Użytkowników działających wspólnie
-                        i w porozumieniu, w tym z wykorzystaniem różnych Kont, Grupa FakeOLX może,
+                        i w porozumieniu, w tym z wykorzystaniem różnych Kont, Grupa Olx<bold>ample</bold> może,
                         z zachowaniem zasad proporcjonalności i poszanowania wolności obrotu,
                         zawiesić Konto lub Konta albo tymczasowo lub permanentnie je zablokować,
                         co będzie równoznaczne z tymczasowym zawieszeniem świadczenia usług na rzecz
@@ -447,9 +447,9 @@
                                 wykorzystaniem jego funkcjonalności, publikować Ogłoszeń ani dokonywać
                                 Transakcji. Użytkownik może jednak przeglądać Serwis, historię wiadomości
                                 i opublikowanych przez siebie Ogłoszeń oraz dokonywać wpłat na poczet
-                                Portfela FakeOLX, przy czym, aby dokonać wypłaty przypisanych mu środków
+                                Portfela Olx<bold>ample</bold>, przy czym, aby dokonać wypłaty przypisanych mu środków
                                 powinien skontaktować się z się z działem Wsparcia Klienta/Centrum Pomocy
-                                na adres email pomoc@fakeolx.pl;</li>
+                                na adres email pomoc@olxample.pl;</li>
                             <li> zablokowanie Konta oznacza utratę przez Użytkownika możliwości
                                 zalogowania się do Konta.</li>
                         </ul>
@@ -464,16 +464,16 @@
                     <li> W razie wystąpienia jakichkolwiek nieprawidłowości dotyczących działania
                         Serwisu, w tym poszczególnych usług mających charakter techniczny Użytkownik
                         lub Gość powinien w pierwszej kolejności skontaktować się z działem Wsparcia
-                        Klienta/Centrum Pomocy na adres: pomoc@fakeolx.pl, podając dane niezbędne do
+                        Klienta/Centrum Pomocy na adres: pomoc@olxample.pl, podając dane niezbędne do
                         identyfikacji danego problemu.
                     </li>
-                    <li> Grupa FakeOLX dokłada wszelkich starań, aby świadczone usługi były jak
+                    <li> Grupa Olx<bold>ample</bold> dokłada wszelkich starań, aby świadczone usługi były jak
                         najwyższej jakości. Niezależnie od powyższego Użytkownik ma prawo do
                         nieodpłatnego złożenia reklamacji dotyczącej niewykonania bądź nienależytego
-                        wykonania przez Grupę FakeOLX usług świadczonych na podstawie Regulaminu.
+                        wykonania przez Grupę Olx<bold>ample</bold> usług świadczonych na podstawie Regulaminu.
                     </li>
-                    <li> Reklamację można złożyć wysyłając maila na adres: pomoc@fakeolx.pl lub
-                        pisemnie na adres Grupy FakeOLX.
+                    <li> Reklamację można złożyć wysyłając maila na adres: pomoc@olxample.pl lub
+                        pisemnie na adres Grupy Olx<bold>ample</bold>.
                     </li>
                     <li> Reklamacja powinna zawierać co najmniej: imię i nazwisko, adres email
                         Użytkownika przypisany do Konta, numer ID Ogłoszenia, okoliczności
@@ -481,13 +481,13 @@
                         reklamacją.
                     </li>
                     <li> Jeżeli podane w reklamacji dane lub informacje nie pozwalają na rozpoznanie
-                        reklamacji, Grupa FakeOLX zwróci się do Użytkownika o wyjaśnienie
+                        reklamacji, Grupa Olx<bold>ample</bold> zwróci się do Użytkownika o wyjaśnienie
                         ewentualnych wątpliwości lub podanie dodatkowych informacji, o ile będzie
-                        to niezbędne dla rozpoznania reklamacji przez Grupę FakeOLX, wskazując
+                        to niezbędne dla rozpoznania reklamacji przez Grupę Olx<bold>ample</bold>, wskazując
                         precyzyjnie takie wątpliwości lub wymagane informacje.
                     </li>
-                    <li> Grupa FakeOLX rozpoznaje reklamację w terminie 14 dni od daty otrzymania
-                        reklamacji lub otrzymania informacji uzupełniającej. Odpowiedź Grupy FakeOLX
+                    <li> Grupa Olx<bold>ample</bold> rozpoznaje reklamację w terminie 14 dni od daty otrzymania
+                        reklamacji lub otrzymania informacji uzupełniającej. Odpowiedź Grupy Olx<bold>ample</bold>
                         w sprawie reklamacji jest wysyłana pocztą elektroniczną na adres email
                         przypisany do Konta, chyba, że Użytkownik zażąda w treści reklamacji
                         przesłania odpowiedzi pocztą na adres korespondencyjny wskazany w treści
@@ -535,7 +535,7 @@
                 <h1>  Postanowienia końcowe</h1>
 
                 <ol>
-                    <li> Grupa FakeOLX zastrzega sobie prawo zmiany Regulaminu z zachowaniem następujących zasad:
+                    <li> Grupa Olx<bold>ample</bold> zastrzega sobie prawo zmiany Regulaminu z zachowaniem następujących zasad:
                         <ol type="a">
                             <li> zmiany Regulaminu mogą nastąpić z przyczyn organizacyjnych, prawnych
                                 lub technicznych i mogą dotyczyć również zmiany opłat, cenników i warunków
@@ -545,7 +545,7 @@
                                 zamieszczenie informacji na stronie Serwisu widocznej po
                                 prawidłowym zalogowaniu się na Konto;
                             </li>
-                            <li> zmiany wchodzą w życie w terminie wskazanym przez Grupę FakeOLX,
+                            <li> zmiany wchodzą w życie w terminie wskazanym przez Grupę Olx<bold>ample</bold>,
                                 nie krótszym niż 7 dni od poinformowania o zmianie Regulaminu,
                                 chyba, że przepisy prawa powszechnie obowiązującego stanowią odmiennie;
                             </li>
@@ -560,11 +560,11 @@
                     <li> Użytkownik, który nie akceptuje treści zmian Regulaminu zachowuje w każdym
                         czasie prawo do rozwiązania umowy o usługę Konta.</li>
                     <li> O ile bezwzględnie obowiązujące przepisy prawa nie stanowią inaczej,
-                        prawem właściwym dla umów pomiędzy Użytkownikiem a Grupą FakeOLX jest prawo
+                        prawem właściwym dla umów pomiędzy Użytkownikiem a Grupą Olx<bold>ample</bold> jest prawo
                         polskie. Wybór prawa polskiego nie pozbawia Konsumenta ochrony przyznanej
                         mu na podstawie przepisów, których nie można wyłączyć w drodze umowy,
                         na mocy prawa jakie byłoby właściwe w braku wyboru prawa.
-                    <li> Wszelkie spory związane z usługami świadczonymi przez Grupę FakeOLX w
+                    <li> Wszelkie spory związane z usługami świadczonymi przez Grupę Olx<bold>ample</bold> w
                     ramach Serwisu zostaną poddane właściwym sądom powszechnym.</li>
                     <li> Załączniki do niniejszego Regulaminu stanowią jego integralną część.</li>
                 </ol>

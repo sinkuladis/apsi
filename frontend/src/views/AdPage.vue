@@ -17,7 +17,7 @@
                     <p class="city"><strong>Lokalizacja:</strong> {{ad.city}}</p>
                     <p class="email"><strong>Mail ogłoszeniodawcy: </strong><a :href="'mailto:' + mail">{{mail}}</a></p>
                     <p>
-                        <v-btn @click="observeAd">Obserwuj</v-btn>
+                        <v-btn @click="observeAd">{{observed_label}}</v-btn>
                     </p>
                     <p>
                         <v-btn v-if="this.$store.getters.user.id === ad.user.id" @click="editAd(ad.id)">Edytuj
@@ -59,6 +59,7 @@
                     text: 'Wystąpił błąd!'
                 },
                 mail: '',
+                observed_label: 'obserwuj',
                 ad: {
                     "title": "Rower",
                     "image": "",
@@ -110,10 +111,18 @@
                     credentials: 'include',
                     headers: {'Authorization': 'Bearer ' + this.$store.getters.token}
                 }).then(() => {
-                    this.snackBar.text = 'Dodano do obserwowanych'
-                    this.snackBar.show = true
+                    if (this.observed_label=="obserwuj"){
+                        this.snackBar.text = 'Dodano do obserwowanych'
+                        this.snackBar.show = true
+                        this.observed_label = 'przestań obserwować'
+                    } else {
+                        this.snackBar.text = 'Przestano do obserwować'
+                        this.snackBar.show = true
+                        this.observed_label = 'obserwuj'
+                    }
+
                 }).catch(() => {
-                    this.snackBar.text = 'Wystąpił błąd!'
+                    this.snackBar.text = 'Musisz być zalogowany, aby móc dodać ogłoszenie do obserwowanych!'
                     this.snackBar.show = true
                 })
             },
