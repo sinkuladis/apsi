@@ -91,7 +91,7 @@ class AdvertView(viewsets.ModelViewSet):
     @action(detail=True, methods=['get'], url_path='search')
     def search_by_title(self, request, pk=None):
         matches = Advert.objects.filter(title__icontains=request.query_params["title"])
-        serializer = AdvertSerializer(matches, many=True)
+        serializer = AdvertSerializerBrief(matches, many=True)
         return Response (serializer.data)
 
 
