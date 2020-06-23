@@ -4,7 +4,7 @@
                 :headers="headers"
                 :items="adverts"
                 @click:row="viewAdvert"
-                class="elevation-1"
+                class="elevation-1 search"
         >
             <template v-slot:item.image="{ item }">
                 <v-img :src="item.image" height="100" widht="100"></v-img>
@@ -47,5 +47,12 @@
 </script>
 
 <style scoped>
-
+    .search {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 80%;
+        margin: auto;
+        padding-bottom: 2rem;
+    }
 </style>
