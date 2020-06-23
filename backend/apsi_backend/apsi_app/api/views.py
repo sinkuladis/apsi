@@ -88,11 +88,18 @@ class AdvertView(viewsets.ModelViewSet):
             instance.save()
             return Response(status=status.HTTP_204_NO_CONTENT)
 
-    @action(detail=True, methods=['get'], url_path='')
+    @action(detail=True, methods=['get'], url_path='search')
     def search_by_title(self, request, pk=None):
         matches = Advert.objects.filter(title__icontains=request.query_params["title"])
-        serializer = AdvertSerializerBrief(matches, many=True)
-        return Response (serializer.data)
+        searched_cities = (City.objects.filter(name__icontains=request.query_params["city"]))
+        matches_list = []
+        for city in searched_cities:
+            matches_list.append(matches.filter(city=city.pk))
+        all_matches = Advert.objects.none()
+        for match in matches_list:
+            all_matches = all_matches | match
+        serializer = AdvertSerializerBrief(all_matches, many=True)
+        return Response(serializer.data)
 
 
 
