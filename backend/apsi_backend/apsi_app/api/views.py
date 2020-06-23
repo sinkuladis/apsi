@@ -89,9 +89,9 @@ class AdvertView(viewsets.ModelViewSet):
             return Response(status=status.HTTP_204_NO_CONTENT)
 
     @action(detail=True, methods=['get'], url_path='search')
-    def search_by_title(self, request):
-        matches = Advert.object.filter(string__icontains=request.title)
-        serializer = AdvertSerializerBrief(matches, many=True)
+    def search_by_title(self, request, pk=None):
+        matches = Advert.objects.filter(title__icontains=request.query_params["title"])
+        serializer = AdvertSerializer(matches, many=True)
         return Response (serializer.data)
 
 
