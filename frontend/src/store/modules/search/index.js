@@ -25,7 +25,7 @@ const actions = {
         return new Promise((resolve, reject) => {
             axios({
                 method: 'GET',
-                url: '/api/adverts/search/search/',
+                url: '/api/adverts/',
                 params: data
             }).then((response) => {
                 commit('searchSuccess')
