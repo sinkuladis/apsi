@@ -3,7 +3,7 @@ from rest_framework.decorators import  action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from ..models import Advert, User, AdvertCategory
+from ..models import Advert, User, AdvertCategory, City
 from .serializers import UserSerializer, AdvertSerializer, UserResetPasswordSerializer, \
     AdvertCategorySerializer, AdvertSerializerBrief
 from ..permissions import IsSelf, IsOwner
@@ -90,15 +90,31 @@ class AdvertView(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['get'], url_path='search')
     def search_by_title(self, request, pk=None):
-        matches = Advert.objects.filter(title__icontains=request.query_params["title"])
-        searched_cities = (City.objects.filter(name__icontains=request.query_params["city"]))
-        matches_list = []
-        for city in searched_cities:
-            matches_list.append(matches.filter(city=city.pk))
-        all_matches = Advert.objects.none()
-        for match in matches_list:
-            all_matches = all_matches | match
-        serializer = AdvertSerializerBrief(all_matches, many=True)
+        if "title" not in request.query_params and "city" not in request.query_params:
+            result = Advert.objects.all()
+        elif "title" in request.query_params and "city" not in request.query_params:
+            result = Advert.objects.filter(title__icontains=request.query_params["title"])
+        elif "title" not in request.query_params and "city" in request.query_params:
+            searched_cities = (City.objects.filter(name__icontains=request.query_params["city"]))
+            matches = Advert.objects.all()
+            matches_list=[]
+            for city in searched_cities:
+                matches_list.append(matches.filter(city=city.pk))
+            result = Advert.objects.none()
+            for match in matches_list:
+                result = result | match
+        elif "title" in request.query_params and "city" in request.query_params:
+            searched_cities = (City.objects.filter(name__icontains=request.query_params["city"]))
+            matches = Advert.objects.filter(title__icontains=request.query_params["title"])
+            matches_list = []
+            for city in searched_cities:
+                matches_list.append(matches.filter(city=city.pk))
+            result = Advert.objects.none()
+            for match in matches_list:
+                result = result | match
+
+
+        serializer = AdvertSerializerBrief(result, many=True)
         return Response(serializer.data)
 
 
