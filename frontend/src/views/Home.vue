@@ -55,7 +55,9 @@
                     try {
                         const resp = await this.$http.get(`/api/adverts/`, { params: { advert_category__name: categoryName } });
                         this.searchedAds = resp.data;
+                        this.$store.commit('storeSearch', resp.data)
                         this.isSearched = true
+                        this.$router.push('/search')
                     } catch {
                        console.log("kek") 
                     }

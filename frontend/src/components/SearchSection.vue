@@ -77,7 +77,7 @@
         },
         methods: {
             search: async function() {
-                this.loading=true
+                this.loading = true
                 await this.$store.dispatch('searchAdverts', this.data)
                     .then((response) => {
                         if(response.data.length === 0){
